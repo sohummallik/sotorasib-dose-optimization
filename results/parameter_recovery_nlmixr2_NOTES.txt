@@ -1,0 +1,13 @@
+Source: final converged SAEM iteration (200/200) as printed to console, R/02c_simulate_and_recover_diag.R.
+ The fit object did not persist after this point (R session exited during
+ the covariance/SE calculation step), so formal RSE and eta shrinkage
+ are not available from this run. Point estimates above are the
+ algorithm's own converged values from the printed iteration log, not
+ reconstructed after the fact.
+ Estimation used a DIAGONAL omega (no covariance between eta.CL and
+ eta.V2) and n=60 subjects, Day 1/8-only sampling, for numerical
+ stability and reduced computation -- see script header for rationale.
+
+The archived table contains rounded console estimates. The script exports
+full-precision values only after the fit returns. A new run may differ.
+The 200 iterations comprise 100 burn-in and 100 estimation iterations.

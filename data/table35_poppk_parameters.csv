@@ -1,0 +1,41 @@
+block,parameter,description,unit,base_model_mean,base_model_pct_rse,final_model_mean,final_model_pct_rse,source_page,notes
+Structural,TVKA,First-order absorption rate constant between transit compartments and from last transit compartment to central compartment,1/hr,6.92,3.1,7.854,3.8,237,Three transit absorption compartments per model description p231
+Structural,CLBS,Apparent clearance at baseline (TAFD=0),L/hr,26.7,6.9,21.6,7.5,237,Apparent clearance CL/F; oral data cannot separate CL from F
+Structural,CLSS,Apparent clearance at steady state,L/hr,45.3,3.6,41.3,5.3,237,CLSS/CLBS = 1.91 consistent with reported 91% increase from autoinduction p231
+Structural,KIND_F,Induction rate coefficient,1/hr,0.00859,10.0,0.00845,8.8,237,Exponential induction function; t-half of induction = ln(2)/0.00845 = 82 hr
+Structural,TVS2,Apparent volume of distribution of central compartment,L,198,4.1,219,4.8,237,V2/F
+Structural,K24,Rate constant central to peripheral,1/hr,0.0322,8.1,0.0269,5.8,237,Two-compartment disposition parameterized as rate constants not Q/V
+Structural,K42,Rate constant peripheral to central,1/hr,0.0674,14.3,0.0420,14.6,237,
+Bioavailability_baseline,F1BS_DG1,Baseline relative bioavailability dose group 1 (120 mg 180 mg 240 mg),ratio to F1SS_DG5,4.94,22.8,4.95,22.7,237,CRITICAL: 120/180/240 mg lumped into one dose group; estimate not specific to 240 mg
+Bioavailability_baseline,F1BS_DG2,Baseline relative bioavailability dose group 2 (360 mg),ratio to F1SS_DG5,3.36,10.3,3.44,9.6,237,
+Bioavailability_baseline,F1BS_DG3,Baseline relative bioavailability dose group 3 (480 mg),ratio to F1SS_DG5,3.88,16.7,2.94,13.5,237,
+Bioavailability_baseline,F1BS_DG4,Baseline relative bioavailability dose group 4 (600 mg 720 mg 840 mg),ratio to F1SS_DG5,2.36,14.7,2.30,14.8,237,
+Bioavailability_baseline,F1BS_DG5,Baseline relative bioavailability dose group 5 (960 mg),ratio to F1SS_DG5,1.55,4.8,1.53,4.4,237,Reference dose group; value >1 vs steady-state reference reflects autoinduction of F
+Bioavailability_steadystate,F1SS_DG1,Steady-state relative bioavailability dose group 1 (120 mg 180 mg 240 mg),ratio to F1SS_DG5,4.44,22.1,4.58,21.9,237,Highest RSE in table (21.9%); this parameter carries the low-dose exposure argument
+Bioavailability_steadystate,F1SS_DG2,Steady-state relative bioavailability dose group 2 (360 mg),ratio to F1SS_DG5,2.71,9.0,2.86,9.2,237,
+Bioavailability_steadystate,F1SS_DG3,Steady-state relative bioavailability dose group 3 (480 mg),ratio to F1SS_DG5,1.75,16.9,1.43,15.6,237,Non-monotonic vs DG4 in final model
+Bioavailability_steadystate,F1SS_DG4,Steady-state relative bioavailability dose group 4 (600 mg 720 mg 840 mg),ratio to F1SS_DG5,1.52,8.7,1.58,8.2,237,
+Bioavailability_steadystate,F1SS_DG5,Steady-state relative bioavailability dose group 5 (960 mg),ratio to F1SS_DG5,1,NA,1,NA,237,FIXED reference = 1
+Covariate_CL,CLECOGBL1,ECOG baseline fully active on CL,proportional change,NA,NA,0.149,32.4,238,Reference = Restricted (ECOG 1)
+Covariate_CL,CLECOGBL2,ECOG baseline ambulatory on CL,proportional change,NA,NA,-0.0752,146.0,238,RSE 146% - parameter not identifiable; n=11 (2.2%) in dataset
+Covariate_CL,CLSEX1,Female on CL,proportional change,NA,NA,-0.161,27.3,238,Reference = Male
+Covariate_CL,CLTUM_BS1,Baseline tumor size <=70 mm on CL,proportional change,NA,NA,0.118,37.9,238,Reference = >70 mm. Smaller tumor = higher CL = lower exposure
+Covariate_CL,CLTUM_BS2,Baseline tumor size healthy (0 mm) on CL,proportional change,NA,NA,0.634,17.9,238,Healthy volunteers; +63% CL vs patients with >70mm tumor
+Covariate_CL,CLALB,Baseline albumin on CL,(L/hr)/(g/dL),NA,NA,0.0296,11.0,238,CONTINUOUS not categorical. Higher albumin = higher CL = lower exposure. Centering value not stated in Table 35
+Covariate_CL,CLRACE1,Asian on CL,proportional change,NA,NA,0.220,32.0,238,Reference = Caucasian
+Covariate_CL,CLRACE2,Black or African American on CL,proportional change,NA,NA,0.074,86.7,238,RSE 86.7% - poorly identified
+Covariate_CL,CLRACE3,Other or Multiple on CL,proportional change,NA,NA,0.189,59.6,238,RSE 59.6% - poorly identified
+Covariate_CL,CLRACE4,Native Hawaiian or Other Pacific Islander on CL,proportional change,NA,NA,0.176,42.2,238,
+Covariate_CL,CLRACE5,American Indian or Alaska Native on CL,proportional change,NA,NA,-0.592,6.3,238,Very small n; low RSE is misleading
+Covariate_F1,F1HF,High-fat meal on F1,proportional change,NA,NA,0.330,27.4,238,+33% AUCtau ss per p232
+Covariate_F1,F1PPI,PPI on F1,proportional change,NA,NA,-0.177,38.0,238,Consistent with pH-dependent solubility
+Covariate_KA,KAHF,High-fat meal on KA,proportional change,NA,NA,-0.614,10.2,238,Slower absorption with food
+Covariate_V2,S2SEX1,Female on V2/F,proportional change,NA,NA,-0.200,22.4,238,Reference = Male
+IIV,OMEGA.1.1,Inter-individual variability on apparent volume V2/F,see notes,0.324,61.9,0.285,57.4,239,"Column header says [%CV] but magnitude implies VARIANCE; sqrt(0.285)=0.534 approx 53% CV. MUST resolve against Amgen popPK report before simulating"
+IIV,OMEGA.2.1,Covariance between V2/F and CL,correlation*100,0.205,57.9,0.177,67.0,239,Label says Correlation*100 but value is 0.177; labeling internally inconsistent. Resolve before use
+IIV,OMEGA.2.2,Inter-individual variability on CL,see notes,0.388,68.9,0.247,53.0,239,sqrt(0.247)=0.497 approx 50% CV if variance. Note IIV on CL falls from base to final model as covariates absorb variability
+IIV,OMEGA.3.1,Covariance between V2/F and absorption rate S2-KAIND,correlation*100,-0.125,-38.3,-0.114,38.4,239,
+IIV,OMEGA.3.2,Covariance between CL and absorption rate CL-KAIND,correlation*100,0.061,16.9,0.02,7.64,239,
+IIV,OMEGA.3.3,Inter-individual variability on absorption rate KAIND,see notes,0.33,62.5,0.305,59.8,239,
+Residual,RES_EXP,Exponential (proportional) residual error,NA,0.64,NA,0.626,NA,239,RSE reported as ** (not provided). Combined additive plus proportional error model per p231
+Residual,RES_ADD,Additive residual error,ng/mL,2.46,NA,3.82,NA,239,RSE reported as **

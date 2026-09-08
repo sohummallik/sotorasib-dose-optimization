@@ -1,0 +1,54 @@
+{
+  "scenario_A_published_DG1": {
+    "GMR_240_over_960": 1.1449999999999967,
+    "median_ratio": 1.145,
+    "overlap_coefficient": 0.845,
+    "P_240_exceeds_960": 0.567776,
+    "frac_240_below_960_p10": 0.065,
+    "p10_960": 11178.333252106662,
+    "p10_240": 12799.191573662125,
+    "p50_240": 26362.779443856496,
+    "p50_960": 23024.261523018773,
+    "p90_240": 54393.51651056747,
+    "p90_960": 47505.254594382066,
+    "CV_pct_240": 59.31554994872593,
+    "CV_pct_960": 59.31554994872593
+  },
+  "scenario_B_calibrated_240": {
+    "GMR_240_over_960": 0.8189514294853913,
+    "median_ratio": 0.818951429485391,
+    "overlap_coefficient": 0.8330000000000001,
+    "P_240_exceeds_960": 0.400209,
+    "frac_240_below_960_p10": 0.178,
+    "p10_960": 11178.333252106662,
+    "p10_240": 9154.511996076832,
+    "p50_240": 18855.75188712171,
+    "p50_960": 23024.261523018773,
+    "p90_240": 38904.49615813664,
+    "p90_960": 47505.254594382066,
+    "CV_pct_240": 59.31554994872593,
+    "CV_pct_960": 59.31554994872593
+  },
+  "scenario_A_GMR_param_uncertainty": {
+    "median": 1.1401419931914933,
+    "ci95": [
+      0.7302401809182792,
+      1.7809461509049498
+    ]
+  },
+  "scenario_B_GMR_param_uncertainty": {
+    "median": 0.818306224980354,
+    "ci95": [
+      0.4995499497968008,
+      1.22027495175555
+    ],
+    "interval_interpretation": "95% sensitivity interval under independent calibration-target lognormal perturbations with assumed log-scale SD 0.15; legacy ci95 key retained"
+  },
+  "cmax_cmin_subsample_n150": {
+    "Cmax_GMR_240_over_960": 0.8182910041603653,
+    "Cmin_GMR_240_over_960": 0.8181934655668034,
+    "Cmin_median_240": 87.0144635750786,
+    "Cmin_median_960": 106.34860354723983,
+    "AUC_GMR_check": 0.8182765068706266
+  }
+}

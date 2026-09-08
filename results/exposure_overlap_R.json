@@ -1,0 +1,8 @@
+{
+  "GMR_240_over_960": 0.8183,
+  "overlap_coefficient": 0.821,
+  "P_240_exceeds_960": 0.3953,
+  "frac_240_below_960_p10": 0.172,
+  "CV_pct_960": 57.2248,
+  "CV_pct_240": 57.2235
+}

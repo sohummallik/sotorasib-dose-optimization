@@ -1,0 +1,60 @@
+{
+  "power": {
+    "observed": {
+      "p960": 0.3269230769230769,
+      "p240": 0.24761904761904763,
+      "diff": 0.0793040293040293,
+      "n960": 104,
+      "n240": 105
+    },
+    "power_as_conducted_for_observed_diff": {
+      "normal_approx": 0.24404619648887155,
+      "simulation": 0.2529
+    },
+    "power_as_conducted_for_10pt_diff_35_vs_25": 0.35053867804015065,
+    "n_per_arm_80pct_power_observed_diff": 510,
+    "n_per_arm_80pct_power_10pt_diff_35_vs_25": 329,
+    "n_per_arm_80pct_power_10pt_diff_37_vs_27": 341,
+    "amgen_stated_total_required": ">600",
+    "fda_stated_total_required": ">500 (ORR diff >=10% or OS HR <=0.75)",
+    "n_total_80pct_power_observed_diff": 1020,
+    "n_total_80pct_power_10pt_diff_35_vs_25": 658,
+    "risk_diff_90CI_unstratified_reproduced": [
+      -0.02329616178090635,
+      0.18190422038896495
+    ],
+    "risk_diff_90CI_published_unstratified": [
+      -0.023,
+      0.182
+    ],
+    "risk_diff_95CI": [
+      -0.04294300688227699,
+      0.20155106549033558
+    ],
+    "interpretation": "Post hoc power treats the observed ORRs as true probabilities; it adds no independent evidence beyond the observed effect and interval. Sample-size scenarios assume equal allocation and two-sided alpha 0.05."
+  },
+  "er_efficacy": {
+    "logistic_slope_per_log_auc": -0.8536660063909611,
+    "slope_se": 0.3090167636740189,
+    "slope_p": 0.005735646972060253,
+    "OR_per_doubling_of_AUC": 0.5533767721641784,
+    "OR_per_doubling_95CI": [
+      0.36365974372444126,
+      0.8420669520211834
+    ],
+    "intercept": 8.032735764041881,
+    "note": "Binned data using representative AUC values 13000/19000/27000/46000 (not geometric bin midpoints); no patient-level covariate adjustment. The negative association may reflect confounding and does not establish a causal exposure effect."
+  },
+  "tipping_point": {
+    "tox_slope_gamma_calibrated": 2.6976690192198713,
+    "tox_960": 0.5842139771367049,
+    "tox_240": 0.48999999999999944,
+    "beta_required_for_observed_7p9pt_ORR_gap": 2.338358106257694,
+    "OR_per_doubling_required": 5.057267554712921,
+    "FDA_fitted_slope": -0.8536660063909611,
+    "orr_diff_at_FDA_fitted_slope": -0.03709063067900542,
+    "orr_diff_at_null_slope": 0.0,
+    "toxicity_weight_at_which_240_wins_if_beta_is_required_value": 0.8385167721491071,
+    "note": "Exposure distributions from scenario B (calibrated). ORR anchored to 32.7% at 960 mg typical exposure."
+  }
+}
