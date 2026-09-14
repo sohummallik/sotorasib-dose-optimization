@@ -1,0 +1,11 @@
+"contrast","Cmax_R","Cmax_pub","Cmax_py","AUC_R","AUC_pub","AUC_py","Cmax_err_vs_pub_pct","AUC_err_vs_pub_pct","R_vs_Python_AUC_pct","pass"
+"Low albumin (30 g/L) vs normal (40)",1.079,1.075,1.079,1.42,1.414,1.419,0.4,0.4,0.07,TRUE
+"ECOG 0 vs ECOG 1",0.974,0.977,0.974,0.869,0.868,0.869,-0.3,0.1,0,TRUE
+"ECOG 2 vs ECOG 1",1.016,1.017,1.016,1.081,1.083,1.081,-0.1,-0.2,0,TRUE
+"Asian vs Caucasian",0.966,0.966,0.966,0.82,0.817,0.82,0,0.4,0,TRUE
+"Black vs Caucasian",0.986,0.988,0.986,0.932,0.934,0.932,-0.2,-0.2,0,TRUE
+"Female vs Male",1.237,1.242,1.237,1.192,1.19,1.192,-0.4,0.2,0,TRUE
+"Tumor <=70 mm vs >70 mm",0.979,0.982,0.979,0.894,0.892,0.894,-0.3,0.2,0,TRUE
+"High-fat meal vs fasted",1.157,1.13,1.157,1.328,1.327,1.328,2.4,0.1,0,TRUE
+"PPI vs no PPI",0.822,0.828,0.822,0.822,0.82,0.822,-0.7,0.2,0,TRUE
+"Healthy (0 mm, ECOG 0) vs patients",0.907,0.898,0.907,0.531,0.534,0.532,1,-0.6,-0.19,TRUE

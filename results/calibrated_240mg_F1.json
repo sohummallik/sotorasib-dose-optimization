@@ -1,0 +1,45 @@
+{
+  "F1BS_240": 4.053333333333214,
+  "F1SS_240": 3.2758057179415645,
+  "implied_240mg_autoinduction_F_loss_pct": 19.182424721834025,
+  "published_960mg_autoinduction_F_loss_pct": 34.210526315789465,
+  "published_pattern_pct": {
+    "180mg": 7.5,
+    "360mg": 16.6,
+    "720mg": 31.3,
+    "960mg": 34.2
+  },
+  "ratio_day1": 1.5000000000000442,
+  "ratio_day8": 1.2999999999999996,
+  "ratio_day15": 1.2409780256058858,
+  "ratio_day22": 1.2259372083487647,
+  "ratio_day30": 1.22203640822115,
+  "ratio_day30_ci95": [
+    0.8194874430236799,
+    2.001801822634082
+  ],
+  "implied_240_over_960_at_SS": 0.818306224980354,
+  "implied_240_over_960_at_SS_ci95": [
+    0.4995499497968008,
+    1.22027495175555
+  ],
+  "published_DG1_ratio_day1": 1.2282828282828284,
+  "published_DG1_ratio_day8": 0.9643420630561054,
+  "published_DG1_ratio_day30": 0.8744329783404198,
+  "analytic_vs_ode_check": {
+    "day1": [
+      1.5000000000000442,
+      1.5000000092185806
+    ],
+    "day8": [
+      1.2999999999999996,
+      1.3036833076801277
+    ],
+    "day30": [
+      1.22203640822115,
+      1.222071998509037
+    ]
+  },
+  "assumptions": "Kind, CL, V2, K24, K42, Ka and 960 mg F1 at published values; independent lognormal perturbations of observed ratios with assumed log-scale SD 0.15",
+  "interval_interpretation": "95% sensitivity intervals (2.5th/97.5th percentiles); legacy ci95 keys are retained for compatibility, not conventional confidence intervals"
+}
