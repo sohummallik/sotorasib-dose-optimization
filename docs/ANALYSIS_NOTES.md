@@ -24,11 +24,15 @@ For each coordinate scheme, logit(p_j)=a+b log(x_j) is fitted to the four binomi
 
 The negative fitted association is not a treatment effect. Disease burden and albumin can affect exposure and prognosis, and these aggregate fits do not adjust for them. The conditional intervals omit within-bin exposure uncertainty and the decision to choose a particular coordinate. The analysis does not put efficacy on the same evidentiary footing as the FDA's patient-level continuous safety analysis.
 
-## Hypothetical ORR design
+## Hypothetical formal ORR test
+
+The [August 2024 FDA guidance](https://www.fda.gov/media/164555/download) separates dosage selection from confirmatory testing (III.B, printed p7). Sections III.A/C support PK assessment after first and repeated dosing and longitudinal tolerability, including modifications and patient-reported symptoms. This is a later, nonbinding interpretive framework, not a retrospective requirement or proof that a particular small trial is adequate.
+
+The regulatory decision context is summarized in [Singh, Vellanki and Pazdur](https://doi.org/10.1200/JCO.24.00310). This repository neither reconstructs that assessment nor pools colorectal combination-therapy evidence with NSCLC monotherapy data.
 
 The retained scenario assumes response probabilities 0.35 and 0.25, independent equal-sized arms, two-sided alpha 0.05 and desired power 0.80. The normal approximation uses a pooled-null variance at the rejection boundary and an unpooled variance under the specified alternative. Both rejection tails are included. A scalar root is solved for n and rounded up; 328.47083 becomes 329 per arm, 658 total. Power at 329 is 0.8006336; at 328 it is 0.7994348.
 
-There is no continuity correction, attrition allowance or adjustment for unevaluable participants. Assessment time, clinically meaningful difference, efficacy objective, tolerability measures and operational feasibility need clinical justification before using such a design. The calculation does not reconstruct the sponsor's assumptions, implement noninferiority or identify a uniquely appropriate next trial. Observed-effect post hoc power is excluded because it does not add independent evidence about the observed trial result.
+There is no continuity correction, attrition allowance or adjustment for unevaluable participants. Assessment time, clinically meaningful difference, efficacy objective, tolerability measures and operational feasibility need clinical justification before using such a design. The 658-person calculation answers only the assumed formal-testing question. It is not a minimum sample size for dosage optimization, does not reconstruct the sponsor's assumptions, does not implement noninferiority and does not identify a uniquely appropriate next trial. A descriptive randomized comparison can still inform a dosage decision. Observed-effect post hoc power is excluded because it does not add independent evidence about the observed trial result.
 
 ## Why previous simulation claims are excluded
 
@@ -43,3 +47,8 @@ The historical toxicity function anchored a probability at a reference AUC and m
 The active implementation follows the published three-transfer figure while documenting a conflicting transit-time formula. Albumin units and random-effect notation are treated as source ambiguities, not author-confirmed errors. The full trial article has now been inspected; its supplement and detailed protocol remain uninspected. Any future calibration extension still needs justified target estimands and uncertainty assumptions. The new article access does not change the retained source-verified grouped data or PK implementation checks.
 
 Original work involved reported Claude code assistance. This correction, test and documentation cycle involved Codex assistance. No independent human pharmacometric or clinical review is implied. The author must review and understand the code, claims, contribution record and limitations before dissemination.
+
+
+## Immutable version provenance
+
+The baseline is `043a80508e35306f2ddaac6edc9a621c12a25b21`. Reported calculations correspond to [corrected snapshot 46c83b90f396e942452241fdbe09ae7f1546a7c7](https://github.com/sohummallik/sotorasib-dose-optimization/tree/46c83b90f396e942452241fdbe09ae7f1546a7c7) and its [execution manifest](https://github.com/sohummallik/sotorasib-dose-optimization/blob/46c83b90f396e942452241fdbe09ae7f1546a7c7/reports/execution_report.json). The full-EJC source-access update is documentation commit `1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46`. The v0.3 review inspected active code and dependencies and verified unchanged numerical content without claiming a new pipeline execution. See `reports/documentation_review_v03.json`.

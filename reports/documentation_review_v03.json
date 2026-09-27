@@ -1,0 +1,82 @@
+{
+  "review_version": "0.3",
+  "verified_at_utc": "2026-09-27T06:11:53.395543+00:00",
+  "review_type": "Implementation inspection, source-context update and content-hash verification; documentation only.",
+  "new_numerical_execution": false,
+  "new_test_execution": false,
+  "numerical_results_and_fourteen_passing_tests_remain_from_recorded_corrected_execution": true,
+  "baseline_commit": "043a80508e35306f2ddaac6edc9a621c12a25b21",
+  "corrected_computational_commit": "46c83b90f396e942452241fdbe09ae7f1546a7c7",
+  "corrected_execution_manifest_url": "https://github.com/sohummallik/sotorasib-dose-optimization/blob/46c83b90f396e942452241fdbe09ae7f1546a7c7/reports/execution_report.json",
+  "corrected_execution_manifest_sha256": "6c6787128362d73106af46405487d050328b60473886a82761cefb9211022d0b",
+  "prior_documentation_only_commit": "1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46",
+  "inspected_local_head": "1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46",
+  "verification_method": "Python standard-library SHA-256 plus byte-for-byte comparisons with git-show content; no analysis module imported or executed.",
+  "verification_command_from_task_workspace": "/opt/anaconda3/bin/python3 work/execution_v03/verify_repository_content.py",
+  "verification_script_sha256": "f2bc4ba144ceeb228a58d8b7befe47420506d6b7ccad02a618f17124a71dade2",
+  "active_code_test_input_dependency_files_unchanged": 14,
+  "derived_result_and_figure_files_unchanged": 9,
+  "prior_test_logs_and_numerical_check_records_unchanged": 7,
+  "protected_files_byte_identical_to_computational_commit_and_prior_documentation_commit": true,
+  "protected_file_sha256": {
+    "data/covariate_targets.json": "dc620d784789848ad47c96fe1e9248c80d3020803368a4c71a50a008d717e18a",
+    "data/fda_figure26_quartiles.csv": "efe6b39bdc2be206e02077ab74a9bed5360a6edcbc582fec09627d1d285206a9",
+    "data/poppk_parameters_final.csv": "26bc8d374772f6a6f9de7bf9c065366a6f418e76f72b9eece44a0292bea7eb8e",
+    "requirements-tested.txt": "aa7e516b8f2cc65ca3c10b97a0cc581ee185f34481cb4fe3216a48f81df96cea",
+    "requirements.txt": "0df57790a0f7306550c1ebb962b33fd97615b159f8c9f0169b08ddb7ec686587",
+    "src/design_scenario.py": "23f6c0d11b948f434bb68ae54b7f3a386ce1aecaf98c5518458e61ae92ad0609",
+    "src/figures.py": "c38c0f8823c4dfef49716e6ab63718b79d9e972b98a218dec88efa0ea7c0499c",
+    "src/grouped_exposure_response.py": "e1749a260a12c121e5be980d75de46053f0db747cde6cc17c25881ab5d3ce445",
+    "src/model.py": "eee74b53410976a575fc83a85ab19687dc92fdd0e6c55fd36b898f28d9be4ded",
+    "src/numerical_checks.py": "0821a343f0f34351b33293cbb9c56a63f8ec53da0e225c17453d51e7f08b5449",
+    "src/run_all.py": "9f31f784f5ce0815def793afe280ed9d1f2d41908520831d880d7c85451c9f42",
+    "src/validate.py": "54bacc1269b25909c2360407330ae95472c39ec2c9c64105acb9aa94134aa959",
+    "tests/test_intervals.py": "f420e28da68871152cac7516ffe8b08580d60a7ad627cb3c4e31d85a3819efae",
+    "tests/test_sources_and_statistics.py": "11c37fcb7a4d34c4faf314b2d3fad382de87ed4e9eab2844841c29775babf58f",
+    "figures/grouped_coordinate_sensitivity.pdf": "b5d23b9d620c635ece02308b0fc8f6ef6fd25707b2a806deba84d68943d7f1db",
+    "figures/grouped_coordinate_sensitivity.png": "eafb3fe8f83fb5487cfb87c6f05de0ca4e711214cff6f2065b0946f993a4fa7c",
+    "figures/pk_covariate_checks.pdf": "ace6006b713250d31168f864d60a379c1f940fa1ce47d68287313ae9387be482",
+    "figures/pk_covariate_checks.png": "b183b516f84489b2a42ef8a00eda40332884b9ef934fd09429092ccf5814a985",
+    "results/design_scenario.json": "dae82d046eed7d1bb5ad3d7d09569ccd1b87faed5dffeee773a7b10425379bc2",
+    "results/grouped_coordinate_sensitivity.csv": "79d5b69cbb3cffd084c972be69d1e5910f9890185240baa52715bb993490128c",
+    "results/grouped_exposure_response.json": "08bbc40ee3e1e3ad1f87502874adbb8e21ecc10bf4ae204322b2348d48c6f62e",
+    "results/pk_check_summary.json": "369e98ed7153f85c3357fe74fbb68bd975e09ece344b00d6c617a9a3349ca65c",
+    "results/pk_covariate_checks.csv": "cccb25615c536fa29ee0c519810f5baadb0dcbb309503894d2dd1dce3b627da4",
+    "reports/active_command_1.log": "dc3516560037569b871560835e9feed5bc7781f1a9bdba9ff19ae50dbc77fbd5",
+    "reports/active_command_2.log": "369e98ed7153f85c3357fe74fbb68bd975e09ece344b00d6c617a9a3349ca65c",
+    "reports/active_command_3.log": "126e547c7cfc9ae1429dda43334293f8780deeda66fe051c4874c6e1844f7434",
+    "reports/active_command_4.log": "3bd4b1ad98a12adf013d1669c32fe39150e35397c8c5a793cfac9d661e917df9",
+    "reports/active_command_5.log": "dae82d046eed7d1bb5ad3d7d09569ccd1b87faed5dffeee773a7b10425379bc2",
+    "reports/active_command_6.log": "97854b1bb389b893c5cd29aa36e3d256f0c869e93399243492fa08aedb2d6979",
+    "reports/numerical_checks.json": "568a85b64b11e6569230208ac921cc0a5ad51fc1e8765d2e22442b6d4090958c"
+  },
+  "baseline_archive": {
+    "manifest": "archive/baseline-043a805/MANIFEST_SHA256.json",
+    "manifest_sha256": "1100c83ec1f390934fc8a18a2e58b6452eb940126445d05dbfbeb54b9f433e2d",
+    "files_verified": 45,
+    "all_match_manifest_and_baseline_git_objects": true
+  },
+  "existing_execution_record_preserved_from_prior_documentation_commit": true,
+  "current_execution_record_sha256": "356e01203e7a7d8babdc67b594fa6b237b38f6eeeb52431e7fb6c71a5abf61db",
+  "documentation_updated_sha256": {
+    "README.md": "a844d81bf44f6eb13d647ff3a6ac3644841517e1ccff4ab3ca5e30895f8ab2fc",
+    "data/SOURCE_NOTES.md": "2e720e4da8078943a2e499931c07a5fe6ea7367436c01ac75344442197a2391a",
+    "docs/ANALYSIS_NOTES.md": "49bff1d4bf3d7d2eced0147b95d6564212cb4131d64ad762e7a11c0a2cfb94fa",
+    "docs/CORRECTION_LOG.md": "a0dc99a162cde36e3ee1cd0c74b831dcb7de42b21ab387d0a89f7452c87f334e",
+    "docs/EXECUTION_REPORT.md": "fa0e8f2e504aef4ca773680410a715dd73c307083ffaa2ab0c79f7448b959838"
+  },
+  "sources_added_for_interpretation_only": [
+    {
+      "url": "https://www.fda.gov/media/164555/download",
+      "document": "Final August 2024 oncology dosage guidance",
+      "scope": "Sections III.A-C; III.B printed p7 distinguishes dosage assessment from registrational hypothesis-test power."
+    },
+    {
+      "url": "https://doi.org/10.1200/JCO.24.00310",
+      "document": "Singh, Vellanki and Pazdur, JCO 2025;43:248-250; online October 7, 2024",
+      "access": "Publisher-indexed text inspected; full PDF not obtained.",
+      "scope": "Regulatory decision context only; no new numerical input or cross-indication pooling."
+    }
+  ],
+  "scientific_scope": "Retains PK implementation point checks, grouped-coordinate sensitivity and assumed formal-test calculation; no calibration/projection/utility reinstatement."
+}

@@ -22,3 +22,12 @@ The full text also verifies the June 23, 2023 efficacy and January 18, 2023 safe
 The source-access limitation at the initial audit is retained in the correction history. The calibration and dependent projections remain archived because source access does not resolve the exactly identified fit, population-versus-typical estimand, assumed target uncertainty or algebraically imposed exposure ratio.
 
 `reports/execution_report.json` records input and code hashes. `archive/baseline-043a805/MANIFEST_SHA256.json` preserves the reviewed baseline. Current source corrections are factual transcriptions and operational interpretation statements, not a claim to possess the sponsor control stream.
+
+
+## Added interpretive sources in v0.3
+
+[FDA final August 2024 dosage guidance](https://www.fda.gov/media/164555/download): Sections III.A–C, especially III.B, printed p7. Used for interpretation, not numerical inputs; no retrospective binding requirement is asserted.
+
+[Singh, Vellanki and Pazdur, JCO 2025;43:248–250](https://doi.org/10.1200/JCO.24.00310), online October 7, 2024: publisher-indexed text inspected, not the full PDF. Used to establish the completed regulatory dose-decision context described in README. It supplies no active numerical input. The colorectal evidence is not pooled with the NSCLC aggregate data.
+
+The reported computation is pinned to [46c83b90f396e942452241fdbe09ae7f1546a7c7](https://github.com/sohummallik/sotorasib-dose-optimization/tree/46c83b90f396e942452241fdbe09ae7f1546a7c7) and the [manifest at that snapshot](https://github.com/sohummallik/sotorasib-dose-optimization/blob/46c83b90f396e942452241fdbe09ae7f1546a7c7/reports/execution_report.json), not the moving branch. Original execution hashes and source-access history are preserved. The v0.3 documentation hash check is separate in `reports/documentation_review_v03.json`.

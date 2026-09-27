@@ -1,6 +1,10 @@
 # Sotorasib dose evidence: reproduction and sensitivity analysis
 
-This repository uses public aggregate evidence to examine what selected pharmacokinetic and statistical calculations can support about a dose-development question. The current analysis is deliberately narrow: published-model point checks, grouped exposure-coordinate sensitivity, and one explicitly hypothetical response-rate planning scenario. It does not identify an optimal sotorasib dose, establish dose equivalence, fit individual trial data, or reproduce the sponsor's original model development.
+This repository uses public aggregate evidence to examine what selected pharmacokinetic and statistical calculations can support about a dose-development question. The current analysis is deliberately narrow: published-model point checks, grouped exposure-coordinate sensitivity, and one explicitly hypothetical formal response-rate testing scenario. It does not identify an optimal sotorasib dose, establish dose equivalence, fit individual trial data, or reproduce the sponsor's original model development.
+
+Dosage selection combines activity, safety, tolerability and exposure; it differs from proving superiority or noninferiority. FDA's nonbinding August 2024 guidance does not require registrational hypothesis-testing power for every dose-comparison study. A randomized descriptive comparison can inform selection without establishing equivalence or proving that its precision is adequate. The 658-person scenario below addresses an assumed formal test, not a minimum for dosage optimization. [FDA guidance, Section III.B, printed p7](https://www.fda.gov/media/164555/download).
+
+FDA authors later reported that the dose-related postmarketing requirement was fulfilled in December 2023, retaining 960 mg using the randomized dose comparison, PK/target-saturation information and supporting colorectal-cancer evidence. This project is a limited methodological audit of aggregate evidence, not a claim that no dosage decision could be made. [Singh, Vellanki and Pazdur, JCO 2025](https://doi.org/10.1200/JCO.24.00310).
 
 ## Current supported results
 
@@ -8,11 +12,19 @@ This repository uses public aggregate evidence to examine what selected pharmaco
 |---|---|---|
 | Published PK covariate checks | 10/10 contrasts (20 point ratios) pass the retained 5% numerical comparison threshold; largest difference 1.901% | Limited agreement with selected published point summaries, not clinical model validation. |
 | Grouped exposure-coordinate sensitivity | OR per coordinate doubling: 0.553 using displayed labels; 0.677 using geometric range midpoints; 0.653 using arithmetic range midpoints | The fitted magnitude depends on how four bins are represented. Neither coordinate choice resolves confounding or recovers patient exposures. |
-| Hypothetical ORR design | 329 per arm, 658 total | 35% versus 25% response, equal allocation, two-sided alpha 0.05 and 80% power under the stated normal approximation. Not the sponsor's plan or a uniquely recommended design. |
+| Hypothetical formal ORR test | 329 per arm, 658 total | 35% versus 25% response, equal allocation, two-sided alpha 0.05 and 80% power under the stated normal approximation. Not the sponsor's plan, a uniquely recommended design or a minimum for dosage optimization. |
 
 Conditional 95% intervals for the three grouped fits are 0.364–0.842, 0.505–0.907 and 0.480–0.887. They omit uncertainty in coordinate choice, within-bin exposures and confounding. The source Figure 26 totals 228 patients, whereas nearby methods refer to 248; the difference remains unresolved.
 
 ## Reproduce the retained analysis
+
+The exact corrected code snapshot for the reported numbers is [46c83b90f396e942452241fdbe09ae7f1546a7c7](https://github.com/sohummallik/sotorasib-dose-optimization/tree/46c83b90f396e942452241fdbe09ae7f1546a7c7), with its [immutable execution manifest](https://github.com/sohummallik/sotorasib-dose-optimization/blob/46c83b90f396e942452241fdbe09ae7f1546a7c7/reports/execution_report.json). The later source-access revision [1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46](https://github.com/sohummallik/sotorasib-dose-optimization/commit/1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46) changed documentation only. The v0.3 framing/reproducibility update also leaves the calculations unchanged; its fresh hash review is recorded in `reports/documentation_review_v03.json`.
+
+To reproduce those fixed results, check out the corrected snapshot before running the commands below:
+
+```bash
+git checkout 46c83b90f396e942452241fdbe09ae7f1546a7c7
+```
 
 Use Python with the dependencies in `requirements.txt`. The exact tested environment is recorded in `reports/execution_report.json`; `requirements-tested.txt` lists the tested package versions. An isolated environment is recommended when installing dependencies.
 
@@ -65,6 +77,8 @@ Sohum Mallik reports conducting the original project with Claude assistance in w
 - [Nagase et al., AAPS Journal 2025;27:26](https://doi.org/10.1208/s12248-024-01013-6): Tables I–II and Figures 1 and 3.
 - [FDA NDA 214665 multidisciplinary review (2021)](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/214665Orig1s000MultidisciplineR.pdf): Figure 26, PDF page 248.
 - [Hochmair et al., European Journal of Cancer 2024;208:114204](https://doi.org/10.1016/j.ejca.2024.114204): full article supplied by the author and inspected on September 27, 2026, including Figure 3 and Table 2. Supplement and detailed protocol remain uninspected.
+- [Singh, Vellanki and Pazdur, JCO 2025;43:248–250](https://doi.org/10.1200/JCO.24.00310): regulatory perspective published online October 7, 2024; publisher-indexed text inspected, no full PDF obtained.
+- [FDA final August 2024 dosage guidance](https://www.fda.gov/media/164555/download): Sections III.A–C, especially III.B, printed p7.
 - [Aung et al., JCO Oncology Practice, June 2026](https://doi.org/10.1200/OP-25-01315): subsequent synthesis relevant to context. No claim that the dose question is novel is made.
 
 Evidence-publication cutoff: September 26, 2026; source-access update: September 27, 2026. A successful run establishes the recorded computational checks, not clinical validity or readiness for public manuscript submission.

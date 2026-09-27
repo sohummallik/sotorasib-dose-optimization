@@ -45,3 +45,12 @@ After the initial correction, the author supplied the full Hochmair EJC article.
 This corrects the documentation's previous present-tense source-access gap. It does not convert rounded means into individual or typical-patient observations, derive ratio uncertainty from profile SD bars, validate the exactly identified calibration, or independently confirm the simulated GMR. The active analysis remains unchanged. Exact parameter summaries, the explicit averaging convention of the ratios, per-arm/per-day PK sample counts and ratio uncertainty remain unresolved; the supplement and detailed protocol remain uninspected.
 
 Six documentation files and an explicitly labeled execution-metadata addendum changed in this update. No source code, numerical parameter, active result, figure or archived baseline file changed, and a numerical rerun was not warranted. No copyrighted full-text PDF was copied into the repository.
+
+
+## v0.3 interpretation and reproducibility update
+
+The added JCO regulatory perspective places this audit after the completed dose decision; it does not provide new computational inputs. The FDA framework now distinguishes dosage selection from a formal efficacy claim. The 658-person illustration is explicitly not a dosage-optimization minimum. Numerical results and exclusions are unchanged.
+
+The full active implementation, tests, numerical input files, dependency declarations, output tables and figure code were inspected again. No material uncovered defect in the retained fixed-input analysis justified another analysis, test or numerical change. This decision does not claim comprehensive software correctness or clinical validation.
+
+Reproducibility links now identify the exact computational snapshot `46c83b90f396e942452241fdbe09ae7f1546a7c7` and its execution manifest; `1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46` remains the separate source-access documentation update. The original execution record is preserved. A fresh content-hash check, recorded in `reports/documentation_review_v03.json`, verifies unchanged code, tests, numerical inputs, dependencies, results, figures and baseline archive. The pipeline was not rerun for these documentation-only changes.
