@@ -50,7 +50,7 @@ Run these from the repository root. `src/run_all.py` creates output directories 
 
 The active interval calculation now includes exact endpoints, interpolates requested boundaries when needed, forbids extrapolation, and explicitly treats central concentration as continuous at an oral dose. The terminal metric is called `C_tau`, avoiding confusion with the interval minimum. A source-linked test protects the corrected FDA quartile boundaries. Numerical refinement and an analytical steady-state mass-balance identity supplement the implementation checks.
 
-The previous two-target 240-mg calibration and overlap projections are on hold: exact day-specific targets, averaging conventions and denominators have not been verified from the final trial report. Fitting two parameters to two targets is calibration, not independent validation. With shared virtual subjects and clearance, the steady-state AUC ratio reduces algebraically to `(240 × F240) / (960 × F960)`; simulation does not independently corroborate that ratio.
+The previous two-target 240-mg calibration and overlap projections remain excluded. The full trial article was supplied and inspected after the initial correction: Figure 3 verifies rounded 960/240 AUC ratios of 1.5 on day 1 and 1.3 on day 8, and identifies a September 9, 2022 PK cutoff with 208 patients overall. It plots mean (SD) concentration profiles, but does not provide exact PK-parameter values, an explicit arithmetic-versus-geometric convention for the ratios, per-arm/per-day PK denominators or ratio uncertainty. The supplement and detailed protocol remain uninspected. Fitting two parameters to two targets is calibration, not independent validation. With shared virtual subjects and clearance, the steady-state AUC ratio reduces algebraically to `(240 × F240) / (960 × F960)`; simulation does not independently corroborate that ratio.
 
 The previous toxicity/utility and efficacy-threshold results are excluded. The toxicity curve described matching both arm means but actually predicted 58.42% and 49.00% instead of its stated 61.5% and 49.0% targets. Merely retuning a curve would not justify a causal exposure-toxicity model or a benefit-risk utility. Post hoc observed-effect power is not active evidence. The incomplete R estimation run is historical only.
 
@@ -64,7 +64,7 @@ Sohum Mallik reports conducting the original project with Claude assistance in w
 
 - [Nagase et al., AAPS Journal 2025;27:26](https://doi.org/10.1208/s12248-024-01013-6): Tables I–II and Figures 1 and 3.
 - [FDA NDA 214665 multidisciplinary review (2021)](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/214665Orig1s000MultidisciplineR.pdf): Figure 26, PDF page 248.
-- [Hochmair et al., European Journal of Cancer 2024;208:114204](https://doi.org/10.1016/j.ejca.2024.114204): final abstract available; full report and supplement not verified for the historical calibration inputs.
+- [Hochmair et al., European Journal of Cancer 2024;208:114204](https://doi.org/10.1016/j.ejca.2024.114204): full article supplied by the author and inspected on September 27, 2026, including Figure 3 and Table 2. Supplement and detailed protocol remain uninspected.
 - [Aung et al., JCO Oncology Practice, June 2026](https://doi.org/10.1200/OP-25-01315): subsequent synthesis relevant to context. No claim that the dose question is novel is made.
 
-Evidence cutoff: September 26, 2026. A successful run establishes the recorded computational checks, not clinical validity or readiness for public manuscript submission.
+Evidence-publication cutoff: September 26, 2026; source-access update: September 27, 2026. A successful run establishes the recorded computational checks, not clinical validity or readiness for public manuscript submission.

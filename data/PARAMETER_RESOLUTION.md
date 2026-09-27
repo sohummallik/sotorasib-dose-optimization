@@ -23,3 +23,8 @@ The low-dose F values pool 120, 180 and 240 mg. The listed assigned levels do no
 ## Sparse covariates, residual error and uncertainty
 
 A coefficient CI crossing zero does not prove nonidentifiability. Very small subgroups warrant caution without claiming a specific artifact or causal selection effect. Residual-error parameters are retained for source provenance but are not used by deterministic point checks. A single marginal parameter CI is not a substitute for full fixed-effect covariance or structural uncertainty. Matching twenty point ratios does not validate residual variability, absolute clinical predictions or dose extrapolation.
+
+
+## Full trial source update, September 27, 2026
+
+The subsequently supplied Hochmair full article verifies the historical rounded AUC ratios (1.5 on day 1 and 1.3 on day 8), with mean (SD) profiles and 208 patients in the PK analysis overall. It does not resolve the Nagase dose-group pooling or structural reporting ambiguities. No parameter value was changed, and no low-dose calibration was reactivated. Exact PK-parameter summaries, the ratio averaging convention, per-arm/per-day sample counts and ratio uncertainty remain unspecified in the inspected article; the supplement and detailed protocol remain uninspected.

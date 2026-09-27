@@ -104,5 +104,23 @@
     "figures/grouped_coordinate_sensitivity.png",
     "figures/pk_covariate_checks.pdf",
     "figures/pk_covariate_checks.png"
-  ]
+  ],
+  "post_execution_documentation_update": {
+    "date": "2026-09-27",
+    "reason": "Author-supplied full Hochmair EJC article inspected after numerical execution; rounded day-specific PK ratios and overall analysis population now verified.",
+    "new_numerical_execution": false,
+    "original_execution_hashes_preserved": true,
+    "changed_hashed_document_paths": [
+      "data/PARAMETER_RESOLUTION.md",
+      "data/SOURCE_NOTES.md"
+    ],
+    "current_document_sha256": {
+      "data/PARAMETER_RESOLUTION.md": "cd0b1419760e57324ddf0658f26af3c56bf10637c6c853ad978559289e0b4a79",
+      "data/SOURCE_NOTES.md": "ed6a0153e7ebfe8d7d39985849ced25f334f06338557e7994a13cb3a3c56d2a5"
+    },
+    "unchanged_code_and_numerical_input_hashes_verified": true,
+    "derived_results_and_figures_byte_identical_to_commit": "46c83b90f396e942452241fdbe09ae7f1546a7c7",
+    "baseline_archive_files_verified_unchanged": 45,
+    "scientific_scope": "Calibration/projection and utility components remain excluded; no active calculation changed."
+  }
 }
