@@ -1,8 +1,7 @@
-__pycache__/
-*.py[cod]
-.venv/
-.DS_Store
 .Rhistory
 .RData
 .Rproj.user/
+__pycache__/
+*.pyc
+.DS_Store
 figures/scratch/

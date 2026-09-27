@@ -1,0 +1,41 @@
+block,parameter,description,unit,final_estimate,ci_lower,ci_upper,bootstrap_estimate,fda_t35_value,source,notes
+Structural,Ka,First-order absorption rate constant between transit compartments and from last transit compartment to central,1/hr,7.87,7.29,8.45,7.81,7.854,AAPS Table II,Single shared Ka across all transit steps. MTT=(n+1)/Ka with n=3 -> 4/7.87=0.508 h. Paper reports 0.51 h. Confirmed.
+Structural,CLBS,Apparent clearance at baseline (TAFD=0),L/hr,21.6,18.4,24.8,21.9,21.6,AAPS Table II,CL/F. Oral data cannot separate CL from F.
+Structural,CLSS,Apparent clearance at steady state,L/hr,41.3,36.7,46.0,41.3,41.3,AAPS Table II,91% increase vs baseline. CYP3A4 autoinduction.
+Structural,KIND_F,Induction rate coefficient,1/hr,0.00845,0.00703,0.00987,0.00849,0.00845,AAPS Table II,Same Kind modulates BOTH F1 and CL. Steady state in approx 2 weeks.
+Structural,V2,Apparent volume of central compartment,L,220,198,242,220,219,AAPS Table II,V2/F. FDA table rounds to 219.
+Structural,K24,Rate constant central to peripheral,1/hr,0.0269,0.0237,0.0302,0.028,0.0269,AAPS Table II,Model parameterized in rate constants not Q/V.
+Structural,K42,Rate constant peripheral to central,1/hr,0.0421,0.0301,0.0541,0.0464,0.0420,AAPS Table II,
+Bioavailability_baseline,F1BS_DG1,Baseline F1 dose group 1 (120 180 240 mg),ratio to F1SS_DG5,4.95,2.77,7.13,5.19,4.95,AAPS Table II,LUMPED GROUP. 240 mg never studied as an assigned dose in this dataset. See CAVEATS.
+Bioavailability_baseline,F1BS_DG2,Baseline F1 dose group 2 (360 mg),ratio to F1SS_DG5,3.43,2.78,4.08,3.48,3.44,AAPS Table II,FDA lists 3.44; AAPS lists 3.43.
+Bioavailability_baseline,F1BS_DG3,Baseline F1 dose group 3 (480 mg),ratio to F1SS_DG5,2.93,2.14,3.73,2.97,2.94,AAPS Table II,480 mg was given BID in patients.
+Bioavailability_baseline,F1BS_DG4,Baseline F1 dose group 4 (600 720 840 mg),ratio to F1SS_DG5,2.30,1.65,2.94,2.32,2.30,AAPS Table II,
+Bioavailability_baseline,F1BS_DG5,Baseline F1 dose group 5 (960 mg),ratio to F1SS_DG5,1.52,1.39,1.66,1.54,1.53,AAPS Table II,F1BS/F1SS = 1.52 -> 34.2% decrease at steady state for 960 mg.
+Bioavailability_steadystate,F1SS_DG1,Steady-state F1 dose group 1 (120 180 240 mg),ratio to F1SS_DG5,4.58,2.70,6.46,4.66,4.58,AAPS Table II,WIDEST CI IN TABLE. Carries the entire low-dose exposure argument.
+Bioavailability_steadystate,F1SS_DG2,Steady-state F1 dose group 2 (360 mg),ratio to F1SS_DG5,2.86,2.35,3.36,2.87,2.86,AAPS Table II,
+Bioavailability_steadystate,F1SS_DG3,Steady-state F1 dose group 3 (480 mg),ratio to F1SS_DG5,1.43,1.01,1.85,1.46,1.43,AAPS Table II,Non-monotonic: lower than DG4. 480 mg BID not QD.
+Bioavailability_steadystate,F1SS_DG4,Steady-state F1 dose group 4 (600 720 840 mg),ratio to F1SS_DG5,1.58,1.34,1.82,1.59,1.58,AAPS Table II,
+Bioavailability_steadystate,F1SS_DG5,Steady-state F1 dose group 5 (960 mg),ratio to F1SS_DG5,1,NA,NA,NA,1,AAPS Methods,FIXED to 1. Reference. Omitted from AAPS Table II because fixed.
+Covariate_CL,CLALB1,Albumin on CL,proportional change per g/L,0.0296,0.0249,0.0343,0.0298,0.0296,AAPS Table II,UNIT LABEL IN BOTH SOURCES IS WRONG. See CAVEATS item 2. Reference 40 g/L. Higher albumin -> higher CL -> lower exposure.
+Covariate_CL,CLECOGBL1,ECOG fully active on CL,proportional change,0.151,0.0515,0.25,0.147,0.149,AAPS Table II,Reference = Restricted (ECOG 1). FDA lists 0.149.
+Covariate_CL,CLECOGBL2,ECOG ambulatory on CL,proportional change,-0.0748,-0.285,0.136,-0.0655,-0.0752,AAPS Table II,CI CROSSES ZERO. n=11 (2.2%). Not identifiable.
+Covariate_CL,CLRACE1,Asian on CL,proportional change,0.220,0.0899,0.351,0.224,0.220,AAPS Table II,Reference = Caucasian.
+Covariate_CL,CLRACE2,Black or African American on CL,proportional change,0.0734,-0.0539,0.201,0.0834,0.074,AAPS Table II,CI CROSSES ZERO.
+Covariate_CL,CLRACE3,Other or Multiple on CL,proportional change,0.193,-0.0315,0.418,0.198,0.189,AAPS Table II,CI CROSSES ZERO.
+Covariate_CL,CLRACE4,Native Hawaiian or Other Pacific Islander on CL,proportional change,0.181,0.0471,0.315,0.175,0.176,AAPS Table II,n=1 in dataset. Do not use.
+Covariate_CL,CLRACE5,American Indian or Alaska Native on CL,proportional change,-0.591,-0.639,-0.543,-0.601,-0.592,AAPS Table II,n=1 in dataset. Narrow CI is an artifact. Do not use.
+Covariate_CL,CLSEX1,Female on CL,proportional change,-0.161,-0.24,-0.0814,-0.156,-0.161,AAPS Table II,Reference = Male.
+Covariate_CL,CLTUM_BS_CAT1,Baseline tumor size <=70 mm on CL,proportional change,0.119,0.0309,0.207,0.118,0.118,AAPS Table II,Reference = >70 mm. Smaller tumor -> higher CL -> lower exposure.
+Covariate_CL,CLTUM_BS_CAT2,Healthy (0 mm tumor) on CL,proportional change,0.636,0.434,0.838,0.631,0.634,AAPS Table II,Healthy volunteers clear 64% faster than patients with >70 mm tumor.
+Covariate_F1,F1HIGHFAT1,High-fat meal on F1,proportional change,0.328,0.148,0.508,0.334,0.330,AAPS Table II,+33% AUCtau ss.
+Covariate_F1,F1PPI1,PPI on F1,proportional change,-0.178,-0.31,-0.0459,-0.174,-0.177,AAPS Table II,37% of patients (160/431) took a PPI on study.
+Covariate_Ka,KAHIGHFAT1,High-fat meal on Ka,proportional change,-0.614,-0.736,-0.492,-0.601,-0.614,AAPS Table II,See CAVEATS item 4 re MTT reconciliation.
+Covariate_V2,S2SEX1,Female on V2/F,proportional change,-0.199,-0.281,-0.118,-0.201,-0.200,AAPS Table II,Reference = Male.
+IIV,OMEGA_1_1,IIV on apparent volume V2/F,variance on log scale,0.285,NA,NA,0.283,0.285,AAPS Table II,RESOLVED: value is VARIANCE. Parenthetical 57.4 is %CV = sqrt(exp(0.285)-1)*100 = 57.4. Reproduced exactly.
+IIV,OMEGA_2_2,IIV on apparent clearance CL/F,variance on log scale,0.248,NA,NA,0.245,0.247,AAPS Table II,%CV = sqrt(exp(0.248)-1)*100 = 53.1. Reported 53.0. Reproduced.
+IIV,OMEGA_3_3,IIV on absorption rate Ka,variance on log scale,0.306,NA,NA,0.305,0.305,AAPS Table II,%CV = sqrt(exp(0.306)-1)*100 = 59.8. Reported 59.8. Reproduced exactly.
+IIV,OMEGA_2_1,Covariance V2-CL,covariance on log scale,0.178,NA,NA,0.176,0.177,AAPS Table II,Correlation = 0.178/(sqrt(0.285)*sqrt(0.248)) = 0.6695. Reported 67.0. Reproduced.
+IIV,OMEGA_3_1,Covariance V2-Ka,covariance on log scale,-0.113,NA,NA,-0.114,-0.114,AAPS Table II,Correlation = -0.383. Reported -38.4. Reproduced.
+IIV,OMEGA_3_2,Covariance CL-Ka,covariance on log scale,0.021,NA,NA,0.0201,0.02,AAPS Table II,Correlation = 0.0762. Reported 7.64. Reproduced.
+Residual,ERR_EXP,Exponential (proportional) residual error term theta_x,NA,0.625,NA,NA,0.623,0.626,AAPS Table II,Dosne 2016 combined error structure. See CAVEATS item 5.
+Residual,ERR_ADD,Additive residual error term theta_y,ng/mL,3.8,NA,NA,3.65,3.82,AAPS Table II,

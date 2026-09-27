@@ -1,97 +1,70 @@
-# Could the evidence ever have answered the sotorasib dose question?
-### A quantitative reproduction and extension of the Project Optimus case study (LUMAKRAS, NDA 214665)
+# Sotorasib dose evidence: reproduction and sensitivity analysis
 
-**Status:** core analysis complete (September 2026). Write-up in progress.
+This repository uses public aggregate evidence to examine what selected pharmacokinetic and statistical calculations can support about a dose-development question. The current analysis is deliberately narrow: published-model point checks, grouped exposure-coordinate sensitivity, and one explicitly hypothetical response-rate planning scenario. It does not identify an optimal sotorasib dose, establish dose equivalence, fit individual trial data, or reproduce the sponsor's original model development.
 
-## The question
+## Current supported results
 
-Sotorasib was approved at 960 mg once daily. FDA stated in its review that it did not consider that dose optimized, and required a randomized comparison against 240 mg. The trial returned ORR 32.7% vs 24.8%, was not powered for hypothesis testing, and the label did not change. Popat and Ratain (EJC 2024) argue 240 mg is the correct dose; FDA leadership (Singh, Vellanki, Pazdur, JCO 2025) argue the retrofit was the problem, not the answer.
-
-This project does not adjudicate that dispute. It asks a narrower, answerable question: **given the pharmacokinetics, could the exposure-response evidence and the dose-comparison trial, as they existed, have resolved which dose is better? If not, what would it have taken?**
-
-## Extensions evaluated in this repository
-
-Selected published results are reproduced from public data. Relative to the cited FDA/Amgen analyses and Popat/Ratain commentary, this repository evaluates four extensions:
-
-| # | Contribution | Result |
+| Analysis | Result | Meaning |
 |---|---|---|
-| 1 | **Exposure overlap at 240 vs 960 mg**, from the published popPK model, implemented and checked against ten published covariate-effect contrasts, with between-subject variability and parameter uncertainty | GMR 240/960 = **0.82** (95% sensitivity interval **0.50 to 1.22**, propagated from independently sampled Day 1/Day 8 calibration targets with assumed log-scale SD 0.15, approximately 15% relative uncertainty). This is not a conventional confidence interval. Overlap coefficient **0.83**. A 4-fold dose change shifts exposure 18% against a 59% between-subject CV. |
-| 2 | **The steady-state projection.** The trial sampled PK only to Day 8; steady state is ~Day 22. Popat/Ratain say this matters but do not quantify it. | Calibrated to the observed Day 1 (1.5) and Day 8 (1.3) ratios, the model-projected steady-state 960/240 exposure ratio under the calibrated 240 mg F1 scenario is approximately **1.22**. Most of the narrowing had happened by Day 8. |
-| 3 | **Power and sample size, reproduced independently** | Approximately **24% post hoc power** treating the observed 7.9-percentage-point ORR difference (34/104 vs 26/105) as the true effect. **658 total participants** for 80% power to detect **35% vs 25% ORR**, with equal allocation and two-sided alpha 0.05. This is consistent with the cited >600 and >500 estimates, without reconstructing their exact assumptions. The unstratified 90% risk-difference CI rounds to the published limits. |
-| 4 | **Tipping-point analysis** | To produce the observed 8-point ORR gap from an 18% exposure difference, the true exposure-efficacy relationship would need **OR 5.1 per doubling of exposure**. FDA's own quartile data give OR 0.55 in the opposite direction. Explaining the observed ORR difference through exposure alone would require a positive relationship substantially steeper, and opposite in direction, to the estimate from FDA's published quartile data. Binned, unadjusted data cannot establish causality. |
+| Published PK covariate checks | 10/10 contrasts (20 point ratios) pass the retained 5% numerical comparison threshold; largest difference 1.901% | Limited agreement with selected published point summaries, not clinical model validation. |
+| Grouped exposure-coordinate sensitivity | OR per coordinate doubling: 0.553 using displayed labels; 0.677 using geometric range midpoints; 0.653 using arithmetic range midpoints | The fitted magnitude depends on how four bins are represented. Neither coordinate choice resolves confounding or recovers patient exposures. |
+| Hypothetical ORR design | 329 per arm, 658 total | 35% versus 25% response, equal allocation, two-sided alpha 0.05 and 80% power under the stated normal approximation. Not the sponsor's plan or a uniquely recommended design. |
 
-The repository also examines a treatment-management feature of the trial:
+Conditional 95% intervals for the three grouped fits are 0.364–0.842, 0.505–0.907 and 0.480–0.887. They omit uncertainty in coordinate choice, within-bin exposures and confounding. The source Figure 26 totals 228 patients, whereas nearby methods refer to 248; the difference remains unresolved.
 
-**5. Dose reductions were permitted in the 960 mg arm only** (Hochmair 2024, Methods 2.1). The trial compared an adaptive strategy ("start at 960, titrate down") against a fixed dose ("240 mg with interruption or discontinuation"). Hepatotoxicity-driven discontinuation was 10.6% at 240 mg vs 5.8% at 960 mg. The asymmetric dose-modification rules complicate comparison of delivered dose intensity, treatment persistence, and tolerability. These observations do not establish that the rules caused the discontinuation difference or favored either arm for efficacy.
+## Reproduce the retained analysis
 
-## Headline figures
-
-| | |
-|---|---|
-| ![](figures/fig1_dose_vs_exposure.png) | ![](figures/fig2_exposure_overlap.png) |
-| ![](figures/fig3_exposure_ratio_timecourse.png) | ![](figures/fig4_exposure_response_efficacy.png) |
-
-![](figures/fig5_tipping_point.png)
-
-## The conclusion
-
-The public exposure-response summaries and randomized comparison leave substantial uncertainty about dose selection. Under the stated assumptions, the simulations show extensive exposure overlap and limited power for plausible ORR differences. The observed efficacy difference, baseline imbalance, and asymmetric dose-modification rules require cautious interpretation; these analyses do not establish dose equivalence or rule out a pharmacological effect. The results illustrate the value of prospectively planned dose comparisons, consistent with Project Optimus.
-
-## Model verification
-
-The popPK implementation (two-compartment, three transit absorption compartments, time-dependent CL and F via CYP3A4 autoinduction, six covariates, published 3x3 omega matrix) reproduces all ten published covariate exposure ratios from the Amgen forest plot within 2.5% (nineteen of twenty numbers within 1.1%). See `results/validation_covariate_ratios.csv`. Absolute-scale agreement is less close: typical-subject Day 8 AUC is 29,749 versus 35,300 h·ng/mL in the published population summary. These are secondary checks because the original covariate distribution is not fully reconstructable; agreement on relative contrasts is not global model validation.
-
-During implementation, two published unit labels were found to be wrong. The albumin coefficient is labeled (L/hr)/(g/dL) in both the FDA review and the AAPS paper; only an interpretation in g/L reproduces the published forest-plot ratio of 1.414. The FDA table column headed "%RSE" on the IIV rows actually contains %CV. Both are documented in `data/PARAMETER_RESOLUTION.md`.
-
-## Repository
-
-```
-data/       Parameter tables, extracted study results, and source citations
-src/        model.py  validate.py  calibrate_240.py  simulate_population.py  decision_analysis.py  figures.py
-R/          00_install.R  01_model_validate.R  02c_simulate_and_recover_diag.R (reported nlmixr2 SAEM run)  03_population_240_vs_960.R
-results/    Saved analysis outputs and estimation run notes
-figures/    Six Python figures and an R exposure-overlap figure
-docs/       ANALYSIS_NOTES.md (scope, assumptions, design interpretation)
-```
-
-Python and R both contribute to the analysis. The Python files in `src/` are active source code:
-
-| File | Role |
-|---|---|
-| `model.py` | Published popPK model and simulation functions used by the Python pipeline. |
-| `validate.py` | Covariate-effect and absolute-exposure checks. |
-| `calibrate_240.py` | Calibrated 240 mg bioavailability and exposure-ratio projections; its calibration output is also used by R. |
-| `simulate_population.py` | Population exposures, overlap, and sensitivity summaries. |
-| `decision_analysis.py` | Power, exposure-response, and tipping-point calculations. |
-| `figures.py` | Figures from the analysis outputs and model. |
-
-The R implementation provides exposure checks and a synthetic estimation workflow; it does not replace the full Python pipeline.
-
-Install Python dependencies, then run from the repository root:
+Use Python with the dependencies in `requirements.txt`. The exact tested environment is recorded in `reports/execution_report.json`; `requirements-tested.txt` lists the tested package versions. An isolated environment is recommended when installing dependencies.
 
 ```bash
-pip install -r requirements.txt
-python3 src/validate.py
-python3 src/calibrate_240.py
-python3 src/simulate_population.py
-python3 src/decision_analysis.py
-python3 src/figures.py
+python -m pip install -r requirements-tested.txt
+python src/run_all.py
 ```
 
-The primary analysis was implemented in Python. An independent R implementation using rxode2 and nlmixr2 was subsequently executed in Posit Cloud. The Python pipeline produced the headline simulation results. The reported R estimation results come from the reduced-scale diagonal-omega `02c` run (60 synthetic subjects, 100 burn-in and 100 estimation iterations). The covariance/SE step did not complete; the saved recovery table contains point estimates from the printed iteration log. See `R/README.md` for run order and limitations.
+The runner executes the focused tests, PK point checks, numerical checks, grouped-coordinate sensitivity, hypothetical design scenario and figure generation. The active pipeline is deterministic and does not use random draws. The original baseline was independently rerun before correction; the historical runner and its random seeds are archived rather than presented as supported commands.
 
-## Limitations
+Individual supported commands, in order:
 
-- **Simulation from published parameters, not estimation from patient-level data.** The parameter table is Amgen's; patient-level data are not public. Estimation is demonstrated by simulate-and-recover in nlmixr2 (`R/02c_simulate_and_recover_diag.R`), which shows the population-estimation workflow without claiming a fit to real trial data.
-- **240 mg was never an assigned dose in the popPK dataset.** The published dose-group pooling misfits it (predicts 240/960 = 1.15; observed 0.77). The headline uses F1 values calibrated to two observed ratios: the calibration is exactly identified, so goodness-of-fit cannot be assessed. The sensitivity interval uses independent lognormal perturbations with log-scale SD 0.15 on each observed ratio. This assumed uncertainty is not an empirically estimated standard error. Other model parameters remain fixed.
-- **Exposure-response reanalysis is on binned data.** Patient-level data are not public, so covariate adjustment was not possible. The continuous logistic fit puts efficacy on the same functional footing as FDA's safety analysis; it does not remove the confounding.
-- **Albumin distribution SD is assumed** (5 g/L); the source reports median and range only.
-- **The utility function is illustrative.** The tipping-point surface shows where conclusions flip; it does not assert a weight.
+```bash
+python -m unittest discover -s tests -v
+python src/validate.py
+python src/numerical_checks.py
+python src/grouped_exposure_response.py
+python src/design_scenario.py
+python src/figures.py
+```
 
-## Primary sources
+Run these from the repository root. `src/run_all.py` creates output directories and records command exit status, environment, code/input hashes and omitted checks.
 
-1. FDA. NDA 214665 Multi-Discipline Review, LUMAKRAS. Reference ID 4803204.
-2. Nagase M et al. AAPS J 2025;27:26. PMID 39806205.
-3. Hochmair MJ et al. Eur J Cancer 2024;208:114204.
-4. Popat S, Ratain MJ. Eur J Cancer 2024;212:115044.
-5. Singh H, Vellanki PJ, Pazdur R. J Clin Oncol 2025;43:248-250.
+## Current figures
+
+![Selected PK covariate point checks](figures/pk_covariate_checks.png)
+
+**Figure 1.** Implementation and published point contrasts from Nagase Figure 3, at 960 mg once daily. The implementation uses day 30, a 0.03125-hour sample grid, and LSODA tolerances documented in the numerical report. Only point contrasts are compared; published uncertainty bands are not reproduced. Covariate definitions follow the source's labels. Agreement is not clinical validation.
+
+![Grouped-coordinate sensitivity](figures/grouped_coordinate_sensitivity.png)
+
+**Figure 2.** Left: FDA Figure 26 response counts in four predicted-AUC quartiles, with Clopper–Pearson exact binomial 95% intervals calculated here from the source counts. Right: conditional Wald 95% intervals from three grouped-binomial logistic fits. Exposure ranges and displayed coordinates are distinct source fields; alternative midpoints are assumptions, not inferred individual exposures. AUC is in h·ng/mL. The association is unadjusted and does not establish a causal exposure effect. The figure is a newly generated display of the retained aggregate data, not a copy of the FDA image.
+
+## Corrections and exclusions
+
+The active interval calculation now includes exact endpoints, interpolates requested boundaries when needed, forbids extrapolation, and explicitly treats central concentration as continuous at an oral dose. The terminal metric is called `C_tau`, avoiding confusion with the interval minimum. A source-linked test protects the corrected FDA quartile boundaries. Numerical refinement and an analytical steady-state mass-balance identity supplement the implementation checks.
+
+The previous two-target 240-mg calibration and overlap projections are on hold: exact day-specific targets, averaging conventions and denominators have not been verified from the final trial report. Fitting two parameters to two targets is calibration, not independent validation. With shared virtual subjects and clearance, the steady-state AUC ratio reduces algebraically to `(240 × F240) / (960 × F960)`; simulation does not independently corroborate that ratio.
+
+The previous toxicity/utility and efficacy-threshold results are excluded. The toxicity curve described matching both arm means but actually predicted 58.42% and 49.00% instead of its stated 61.5% and 49.0% targets. Merely retuning a curve would not justify a causal exposure-toxicity model or a benefit-risk utility. Post hoc observed-effect power is not active evidence. The incomplete R estimation run is historical only.
+
+All 45 original tracked files are preserved exactly under [`archive/baseline-043a805`](archive/baseline-043a805), with a SHA-256 manifest. Archived README statements and figures are superseded. The active runner never executes the archive. See the [correction log](docs/CORRECTION_LOG.md), [methods and limitations](docs/ANALYSIS_NOTES.md), [source notes](data/SOURCE_NOTES.md) and [execution report](docs/EXECUTION_REPORT.md).
+
+## Provenance and assistance
+
+Sohum Mallik reports conducting the original project with Claude assistance in writing Python and R code and is the sole author. Subsequent source auditing, code correction, testing, regenerated figures and documentation involved Codex assistance. This record does not imply unassisted authorship, independent human expert review or institutional endorsement. No individual clinical-trial records were used. No full-text journal PDFs are distributed here.
+
+## Sources
+
+- [Nagase et al., AAPS Journal 2025;27:26](https://doi.org/10.1208/s12248-024-01013-6): Tables I–II and Figures 1 and 3.
+- [FDA NDA 214665 multidisciplinary review (2021)](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/214665Orig1s000MultidisciplineR.pdf): Figure 26, PDF page 248.
+- [Hochmair et al., European Journal of Cancer 2024;208:114204](https://doi.org/10.1016/j.ejca.2024.114204): final abstract available; full report and supplement not verified for the historical calibration inputs.
+- [Aung et al., JCO Oncology Practice, June 2026](https://doi.org/10.1200/OP-25-01315): subsequent synthesis relevant to context. No claim that the dose question is novel is made.
+
+Evidence cutoff: September 26, 2026. A successful run establishes the recorded computational checks, not clinical validity or readiness for public manuscript submission.

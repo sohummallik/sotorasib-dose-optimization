@@ -1,0 +1,19 @@
+test_discontinuous_duplicate_rejected (test_intervals.IntervalTests.test_discontinuous_duplicate_rejected) ... ok
+test_exact_endpoints_constant_curve (test_intervals.IntervalTests.test_exact_endpoints_constant_curve) ... ok
+test_frozen_parameter_mass_balance (test_intervals.IntervalTests.test_frozen_parameter_mass_balance) ... ok
+test_grid_and_solver_tolerance_sensitivity (test_intervals.IntervalTests.test_grid_and_solver_tolerance_sensitivity) ... ok
+test_invalid_arguments_and_nonfinite_samples (test_intervals.IntervalTests.test_invalid_arguments_and_nonfinite_samples) ... ok
+test_no_extrapolation (test_intervals.IntervalTests.test_no_extrapolation) ... ok
+test_nonbinary_grid_reaches_every_exact_boundary (test_intervals.IntervalTests.test_nonbinary_grid_reaches_every_exact_boundary) ... ok
+test_oral_event_continuity_and_integral_additivity (test_intervals.IntervalTests.test_oral_event_continuity_and_integral_additivity) ... ok
+test_terminal_concentration_is_not_interval_minimum (test_intervals.IntervalTests.test_terminal_concentration_is_not_interval_minimum) ... ok
+test_unaligned_boundaries_linear_interpolation (test_intervals.IntervalTests.test_unaligned_boundaries_linear_interpolation) ... ok
+test_design_integer_boundary (test_sources_and_statistics.SourceAndStatisticTests.test_design_integer_boundary) ... ok
+test_fda_figure26_transcription (test_sources_and_statistics.SourceAndStatisticTests.test_fda_figure26_transcription) ... ok
+test_grouped_fit_equivalent_to_frequency_weighted_bernoulli (test_sources_and_statistics.SourceAndStatisticTests.test_grouped_fit_equivalent_to_frequency_weighted_bernoulli) ... ok
+test_null_power_matches_alpha (test_sources_and_statistics.SourceAndStatisticTests.test_null_power_matches_alpha) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.605s
+
+OK

@@ -1,0 +1,22 @@
+{
+  "assumed_ORR_arm_1": 0.35,
+  "assumed_ORR_arm_2": 0.25,
+  "difference_percentage_points": 10,
+  "allocation": "1:1",
+  "alpha_two_sided": 0.05,
+  "target_power": 0.8,
+  "normal_approximation_continuous_n_per_arm": 328.47082987419253,
+  "n_per_arm": 329,
+  "n_total": 658,
+  "power_at_selected_n": 0.8006335738998107,
+  "power_at_one_fewer_per_arm": 0.7994348299835923,
+  "method": "Two-sided two-proportion z normal approximation, pooled-null rejection boundary and unpooled alternative variance; no continuity correction.",
+  "limitations": [
+    "Hypothetical rates, not original-trial planning assumptions.",
+    "No attrition or unevaluable-patient allowance.",
+    "Response-assessment time, meaningful difference and choice of superiority objective require clinical justification.",
+    "Not a noninferiority design or a uniquely recommended sample size."
+  ],
+  "random_seed": null,
+  "randomness": "None; deterministic calculation."
+}

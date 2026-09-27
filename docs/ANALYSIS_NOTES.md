@@ -1,147 +1,45 @@
-# Analysis notes: Hochmair 2024 and Popat/Ratain 2024
+# Methods and limits of the retained analysis
 
-## 1. Scope relative to Popat and Ratain
+## Scope
 
-**What they did.** Their Figure 1 is a direct reproduction of FDA's exposure-response
-figures: ORR by exposure quartile (panels A, B) plus Kaplan-Meier curves for OS and PFS
-stratified by exposure quartile (panels C through F), on both AUCtau,ss and Ctrough,ss.
-They also assembled the regulatory and commercial argument: the patent filing, the
-cost-effectiveness case, the label's failure to address chronic grade 1-2 GI toxicity,
-and the burden-of-proof framing.
+The active pipeline reproduces selected PK point contrasts, evaluates sensitivity of an aggregate exposure-response fit to coordinate choices, and calculates one hypothetical response-rate design scenario. Source review was targeted, not a systematic review. No preregistration, independent clinical validation or new patient-level model fit is claimed. Original analyses excluded after the audit remain intact in the baseline archive.
 
-**What they did NOT do, verified by reading the full text:**
+## PK implementation and numerical measurement
 
-- No power calculation. They mention power once, in passing, regarding CodeBreaK 200's
-  OS endpoint. They never compute the sample size CodeBreaK 100 part B would have needed,
-  and they never state the power it had.
-- No continuous exposure-response modeling. They reproduce FDA's quartile bins as-is.
-  No logistic regression on continuous exposure, no covariate adjustment for ECOG,
-  tumor size, or albumin.
-- No popPK simulation. They use published summary exposures only.
-- No analysis of the asymmetric dose-reduction rule (see section 3).
+Structural parameter values come from Nagase Table II. Dose enters the first of three pre-central transit compartments, following Figure 1. Time-dependent apparent clearance and relative bioavailability share an induction coefficient. The active comparisons use deterministic typical-subject scenarios with random effects set to zero, 960 mg once daily and one covariate change at a time. Published variances/covariances remain in the provenance table, but the active pipeline does not sample a population or propagate parameter uncertainty.
 
-These comparisons define the scope relative to the cited papers, not a systematic claim of novelty. Hochmair reports observed exposure ratios; this repository additionally explores model-based exposure overlap.
+The equations are integrated separately between oral dose events using LSODA with relative tolerance 1e-8 and absolute tolerance 1e-6. Doses affect the transit compartment, so central plasma concentration is continuous across the event. Each output interval includes both exact boundaries. Duplicate boundary concentrations must agree to relative tolerance 1e-10 before they are collapsed; inconsistent duplicates are rejected rather than choosing a silent pre/post convention. The helper does not support instantaneous central-compartment dosing.
 
----
+For an externally supplied grid that does not contain a requested boundary, concentration is linearly interpolated between enclosing observations. The helper refuses to extrapolate. AUC is calculated by the trapezoid rule on the closed interval. Cmax/Tmax are sample-grid quantities. C_tau is the concentration at the interval endpoint, not necessarily the minimum within the interval. The historical floor-based interval label dropped each endpoint and has been removed.
 
-## 2. Model predictions versus observed exposure
+The active PK grid is 0.03125 h. Selection is supported by refinement against 0.015625 h and a stricter solve, not by tuning to published ratios. The largest change in any retained covariate ratio when halving the grid was 0.0161%, small relative to the pre-existing 5% source-point comparison threshold. That threshold is retained unchanged; it is a limited implementation acceptance criterion, not a clinical validation threshold. Published uncertainty bands, full fixed-effect covariance, residual-error behavior and the original control stream have not been reproduced.
 
-The pooled dose-group popPK calculation differs from the observed exposure ratios.
+A second check freezes clearance and F at constant values and simulates to periodic steady state. In this linear system AUC over a complete dose interval equals dose×F/CL, independently of the numerical implementation. Tests compare against that identity. Additional tests cover exact and unaligned boundaries, no extrapolation, oral-event continuity, interval additivity and the previously failing 0.05-h output grid.
 
-| Source | 240 mg / 960 mg exposure ratio |
-|---|---|
-| popPK Table II, naive Dose x F1SS | 1.15 |
-| Hochmair observed, Day 1 | 0.67 |
-| Hochmair observed, Day 8 | 0.77 |
+## Grouped exposure-coordinate sensitivity
 
-The model overpredicts 240 mg exposure by roughly 1.5-fold. The explanation is the
-dose-group lumping already documented in PARAMETER_RESOLUTION.md: F1SS_DG1 pools
-120, 180, and 240 mg, is driven mainly by 180 mg data, and is contaminated by
-dose-reduction records. Amgen's own discussion concedes the point: the study was designed
-on the assumption that 240 mg and 960 mg exposures were similar, and the PK data did not
-support that assumption.
+FDA Figure 26, left panel, provides four modeled-AUC groups. The verified boundary pairs are 5000–16000, 16000–22000, 22000–35000 and 35000–85000 h·ng/mL. Displayed central coordinates are separately retained as 13000, 19000, 27000 and 46000. Their summary statistic is not explicitly named in the inspected figure. Counts are 25/57, 26/57, 21/57 and 12/57. The four denominators sum to 228, while nearby methods mention 248; this discrepancy is not filled by assumption.
 
-**This repository quantifies the timing argument discussed by Popat and Ratain.**
+For each coordinate scheme, logit(p_j)=a+b log(x_j) is fitted to the four binomial counts. The descriptive OR per coordinate doubling is exp(b log 2). Its Wald interval uses b ± 1.96 SE(b). Three schemes are reported: displayed labels, geometric range midpoints and arithmetic range midpoints. The alternatives do not estimate the true mean or median exposures within a bin. Expanding the counts at fixed coordinates into repeated binary observations is used only to check the grouped likelihood; it does not manufacture observed patient-level exposures.
 
-Popat and Ratain note that CodeBreaK 100 part B sampled PK only on Days 1 and 8, and that
-steady state is not reached until as late as Day 22. They assert this matters. They do not
-quantify it.
+The negative fitted association is not a treatment effect. Disease burden and albumin can affect exposure and prognosis, and these aggregate fits do not adjust for them. The conditional intervals omit within-bin exposure uncertainty and the decision to choose a particular coordinate. The analysis does not put efficacy on the same evidentiary footing as the FDA's patient-level continuous safety analysis.
 
-The popPK model can. Autoinduction reduces steady-state relative bioavailability by 34.2%
-at 960 mg but only about 7.5% at 180 mg. The high dose loses proportionally more. So the
-exposure gap should keep narrowing after Day 8.
+## Hypothetical ORR design
 
-The observed data already show this happening:
+The retained scenario assumes response probabilities 0.35 and 0.25, independent equal-sized arms, two-sided alpha 0.05 and desired power 0.80. The normal approximation uses a pooled-null variance at the rejection boundary and an unpooled variance under the specified alternative. Both rejection tails are included. A scalar root is solved for n and rounded up; 328.47083 becomes 329 per arm, 658 total. Power at 329 is 0.8006336; at 328 it is 0.7994348.
 
-| Timepoint | 960/240 AUC ratio |
-|---|---|
-| Day 1 | 1.5 |
-| Day 8 | 1.3 |
+There is no continuity correction, attrition allowance or adjustment for unevaluable participants. Assessment time, clinically meaningful difference, efficacy objective, tolerability measures and operational feasibility need clinical justification before using such a design. The calculation does not reconstruct the sponsor's assumptions, implement noninferiority or identify a uniquely appropriate next trial. Observed-effect post hoc power is excluded because it does not add independent evidence about the observed trial result.
 
-A 13% narrowing in seven days, with roughly two more induction half-times still to run
-(Kind = 0.00845/hr, t-half 82 hours).
+## Why previous simulation claims are excluded
 
-The analysis in `src/calibrate_240.py` simulates the 960/240 exposure ratio from Day 1
-through Day 30, calibrated to the observed Day 1 and Day 8 ratios of 1.5 and 1.3.
-It reports the model-projected steady-state ratio with a sensitivity interval under
-the assumed calibration-target uncertainty.
+The original low-dose calibration solved for two F parameters from two selected ratios. Exact trial timepoints, averaging conventions, PK denominators and uncertainty remain unverified. Agreement with those two targets is not goodness-of-fit validation. Most other model parameters were fixed. The sensitivity interval perturbed targets independently at an assumed log SD of 0.15; it was not an empirical clinical confidence interval and did not propagate all structural uncertainty.
 
----
+With identical virtual subjects and clearance at both doses, steady-state AUC ratio is (240×F240)/(960×F960) for every subject. The original GMR therefore restated the calibrated F assumption. Distributional overlap characterized consequences of additional variability assumptions, not independent evidence that doses are equivalent. The original sensitivity also allowed an increase rather than decrease in low-dose F in 22.75% of draws, and its point estimate failed its own claimed adjacent-dose interpolation check. Those details are preserved in the audit record rather than silently repaired by selecting convenient constraints.
 
-## 3. The asymmetric dose-reduction rule: implications for interpretation
+The historical toxicity function anchored a probability at a reference AUC and matched only the lower-dose population mean. Matching both means with an intercept and slope would fix the description numerically but would not justify causality, account for efficacy/safety cutoff differences or establish a meaningful utility weight. The active analysis therefore excludes the utility surface instead of retuning it toward a desired conclusion. The efficacy-only OR threshold was also strongly dependent on the reference anchor. Neither appears in current scientific figures.
 
-From Hochmair Methods, section 2.1, verbatim in substance:
-**dose reductions were permitted for the 960 mg group only.**
+## Unresolved source ambiguities and human responsibility
 
-Neither Amgen's discussion nor Popat and Ratain's commentary analyzes what this does to
-the comparison.
+The active implementation follows the published three-transfer figure while documenting a conflicting transit-time formula. Albumin units and random-effect notation are treated as source ambiguities, not author-confirmed errors. The full trial report/supplement remains important for any future calibration extension; it is not required for the retained source-verified grouped data and implementation checks.
 
-**What was actually compared.** Not 960 mg versus 240 mg. Rather:
-
-- Arm A: start at 960 mg, with tolerability-guided downward titration available
-- Arm B: fixed 240 mg, interrupt or discontinue only
-
-Arm A and Arm B were not identical dosing interventions from a treatment-management perspective. The 960 mg arm permitted dose reduction, whereas the 240 mg arm did not. This asymmetry complicates interpretation of treatment exposure, dose intensity, and tolerability between the arms. It does not by itself establish that the modification rule favored either arm for efficacy.
-
-**Reported treatment-management and safety outcomes:**
-
-| | 960 mg | 240 mg |
-|---|---|---|
-| TEAE leading to dose reduction | 17.3% | N/A (not permitted) |
-| Hepatotoxicity leading to discontinuation | 5.8% | **10.6%** |
-| ALT increased, any grade | 14.4% | **17.3%** |
-
-Hepatotoxicity-driven discontinuation is nearly twice as high in the **low** dose arm.
-Amgen's own text explains the mechanism: elevated transaminases were managed by dose
-interruption in the 240 mg arm, but by interruption followed by dose reduction in the
-960 mg arm. The low-dose arm had one fewer tool for staying on drug.
-
-**Interpretation.** The different dose-modification options complicate comparison of delivered dose intensity, treatment persistence and tolerability. The reported rates do not establish that the rules caused a tolerability or efficacy difference.
-
-**Potential extension (not performed here):** assess delivered dose intensity and compare symmetric versus asymmetric modification strategies under explicit assumptions. This would require additional data and would not by itself identify causal bias.
-
----
-
-## 4. Baseline imbalance, quantified
-
-Hochmair Table 1 states baseline characteristics were generally balanced with one
-exception: history of liver metastasis was 9.6% in the 960 mg arm and 18.1% in the
-240 mg arm. Nearly two-fold, in a poor-prognostic factor, favoring the high-dose arm.
-
-This identifies a baseline imbalance that may affect interpretation; aggregate summaries cannot quantify its contribution to the observed efficacy difference.
-
-Note the interaction with the subgroup analysis: Amgen reports that OS favored 960 mg in
-patients with liver metastasis (HR 0.58, 95% CI 0.23 to 1.46), a subgroup that was
-twice as prevalent in the arm that did worse overall. Wide CI, small n, and a confounded
-starting point.
-
----
-
-## 5. Power, and Amgen's own number
-
-Hochmair Discussion states the trial was not powered for formal hypothesis testing
-because that would have required enrollment of more than 600 patients.
-
-This is Amgen's figure, in the primary publication, not a secondary characterization.
-The repository estimates 658 total participants for 80% power at 35% versus 25% ORR, with equal allocation and two-sided alpha 0.05. Separately, treating the observed 34/104 versus 26/105 rates as true probabilities gives approximately 24% post hoc power. These are distinct calculations; the latter does not reconstruct Amgen's planning assumptions or add independent evidence about the null hypothesis.
-
-Observed: 34/104 versus 26/105. Stratified ORR difference 6.9%, 90% CI -3.4 to 17.1.
-The interval includes zero, and the entire difference is eight patients.
-
----
-
-## 6. Additional context and potential extensions
-
-- **Ratain's absorption arithmetic:** a 300% dose increase produced roughly a 30% exposure
-  increase, implying less than 10% of the incremental 720 mg is absorbed. This is a proposed explanation for GI toxicity, not a causal result of this repository.
-
-- **The 240 mg BID proposal:** because absorption is saturable, splitting the dose could alter exposure. This is an untested extension here; the QD-derived model does not validate a BID regimen.
-
-- **CodeBreaK 300 (colorectal) showed the opposite PK result:** 240 mg gave numerically
-  higher exposure than 960 mg at Day 15. The cross-trial difference does not establish its cause; populations and settings also differ.
-
-- **Real-world VA data:** dose-reduced patients had PFS HR 0.60 and OS HR 0.42. Confounded
-  by immortal time bias, since patients must survive long enough to be reduced.
-
-- **Fatal TEAEs:** 6 versus 4 patients. The 960 mg causes listed include assisted suicide,
-  hemorrhagic stroke, and vascular rupture.
+Original work involved reported Claude code assistance. This correction, test and documentation cycle involved Codex assistance. No independent human pharmacometric or clinical review is implied. The author must review and understand the code, claims, contribution record and limitations before dissemination.

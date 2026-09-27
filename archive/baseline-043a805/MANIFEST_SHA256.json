@@ -1,0 +1,182 @@
+[
+  {
+    "path": ".gitignore",
+    "sha256": "0f62dd8f67484b1b545f81703e6681e208fab2bf0fc5ee63e8e7699236308495"
+  },
+  {
+    "path": "R/00_install.R",
+    "sha256": "cefa0d820c5a01348b77bf9855e0d7ead65b290a68d80410eb1cb0e76591100a"
+  },
+  {
+    "path": "R/01_model_validate.R",
+    "sha256": "019bad7605342b3125a9f5c0d7353518699e6adb305db68f7f353fc3235408f3"
+  },
+  {
+    "path": "R/02_simulate_and_recover.R",
+    "sha256": "eb55a69ef78548e7b9f4487faf0a96efb32d9af69a5b58bdf95ed86eb4a55fba"
+  },
+  {
+    "path": "R/02b_simulate_and_recover_fast.R",
+    "sha256": "ddc974ec6b07f5399e74c7ee6ee5a924647af5bf52c5dd3864cdc4eb216a2b6b"
+  },
+  {
+    "path": "R/02c_simulate_and_recover_diag.R",
+    "sha256": "f97740c931a8d1d461acb785261e3a7e39772a1aee7584ca8241d96eec0fd313"
+  },
+  {
+    "path": "R/03_population_240_vs_960.R",
+    "sha256": "9102fb173a9184eb0b117b32090a38f999c15602fbf8dbd0f97d5103714c9f28"
+  },
+  {
+    "path": "R/README.md",
+    "sha256": "78fb2d17eae16846fbc6ccbabac5f44d80dd8ca588335682602e57084e8c874b"
+  },
+  {
+    "path": "R/run_all.R",
+    "sha256": "59daa2e956a67e43148df5f481f9ecf34989254b9ed936a86aea3cb6ae7e82dd"
+  },
+  {
+    "path": "README.md",
+    "sha256": "01280c64b82af6f9cc5c7991ff8915b2ef558a163837bd525d72a39ae8fcaa05"
+  },
+  {
+    "path": "data/PARAMETER_RESOLUTION.md",
+    "sha256": "f5ae066913c47a28af8ea6414571d7aa1b2c1c255a8b42dd64b3b6f2cbb91363"
+  },
+  {
+    "path": "data/SOURCE_NOTES.md",
+    "sha256": "107a140b20b8937af011502605572508d8ce615e873b26a3285b6bbaf04ceeb2"
+  },
+  {
+    "path": "data/citations_dose_exposure_outcomes.csv",
+    "sha256": "a736cb94b1c99b6163d92a476a22abba7c4119876517842948e6153da580f1e3"
+  },
+  {
+    "path": "data/poppk_parameters_final.csv",
+    "sha256": "200b873450b0687dfb6a83634b5cdd171a1562e3281203a8478cc572d5f2fddb"
+  },
+  {
+    "path": "data/table35_poppk_parameters.csv",
+    "sha256": "d203c71b6c790fc40956213ffcfaa1c3223dae6cf0c5c5085742236f7f1967ba"
+  },
+  {
+    "path": "docs/ANALYSIS_NOTES.md",
+    "sha256": "e8cecffa0f9307be628b0efbbd4b839083d6ad6b2a0571479597a9c0f3fc05f0"
+  },
+  {
+    "path": "figures/fig1_dose_vs_exposure.png",
+    "sha256": "28c36eec8c528ce073ad8e5f92f62133795245cc9e75cee12d67db1be142f83f"
+  },
+  {
+    "path": "figures/fig2_exposure_overlap.png",
+    "sha256": "9283380a2ef12335f4512f69c5bb6a80d01a6ff5e5efffa8799685c899daa366"
+  },
+  {
+    "path": "figures/fig2_exposure_overlap_R.png",
+    "sha256": "4885dcb66f50696817e346e780c6df22237a8590ed8fc5124bb93fcc33c5aee8"
+  },
+  {
+    "path": "figures/fig3_exposure_ratio_timecourse.png",
+    "sha256": "1eba3ed3f3830e6b484628a2a7b53a94f768bcf632d8fefaba72d562841a9478"
+  },
+  {
+    "path": "figures/fig4_exposure_response_efficacy.png",
+    "sha256": "5774a8205c6b992613a4ef678aeb98ba3ad42d73645ad2e9234365e90a702287"
+  },
+  {
+    "path": "figures/fig5_tipping_point.png",
+    "sha256": "e01133e118042d66da5ebb8783865020d2a1c431c43df1515b7615f1cdac74d5"
+  },
+  {
+    "path": "figures/fig6_conc_time_typical.png",
+    "sha256": "51bdc825964ab56068391aecd76f5614179381b4eee2acb5afec2891080a781a"
+  },
+  {
+    "path": "requirements.txt",
+    "sha256": "0df57790a0f7306550c1ebb962b33fd97615b159f8c9f0169b08ddb7ec686587"
+  },
+  {
+    "path": "results/calibrated_240mg_F1.json",
+    "sha256": "709444f4daaac4aba76faf8d98e994eae72ee0ef0e26e77ee782b892beda80cd"
+  },
+  {
+    "path": "results/decision_analysis.json",
+    "sha256": "04805b7c174831a4e400b930182e18d5849f4f3e9d723068881621d67defdcea"
+  },
+  {
+    "path": "results/exposure_overlap.json",
+    "sha256": "7df2e7f89c268a4492cd5cfb62f176ff4b11cf571d425fb6b6ff40df6cfeaf81"
+  },
+  {
+    "path": "results/exposure_overlap_R.json",
+    "sha256": "4e37d9a076267565d4d637b6d8a56395556a8be856a0041265d1ca9e7451e5df"
+  },
+  {
+    "path": "results/exposure_ratio_timecourse.csv",
+    "sha256": "1aad82e481d255865c17a88dd1f10e26ba0efce72ea6c1c14189fe958c588063"
+  },
+  {
+    "path": "results/orr_diff_vs_er_slope.csv",
+    "sha256": "066db89ea77ea130c80d425e255dd79fe084f4e61d43e51607cb408515baa5ca"
+  },
+  {
+    "path": "results/parameter_recovery_nlmixr2.csv",
+    "sha256": "349f08fc148a475cac4e7ff8684af34279b59c5078aba796492c02ad9a801c9c"
+  },
+  {
+    "path": "results/parameter_recovery_nlmixr2_NOTES.txt",
+    "sha256": "e32329ea0f00f2b19f7bd4692e828256c7942aa871f0d53e24381aef3b9eaaee"
+  },
+  {
+    "path": "results/population_exposures.csv",
+    "sha256": "40d4667406141be073b3f95b9cb27c11d52d89760eb1975d75c8490c07ca1dbc"
+  },
+  {
+    "path": "results/population_exposures_R.csv",
+    "sha256": "25d089d82eabcb8144e4e4a2ef177da3beb33d918257b8be6978833964692b39"
+  },
+  {
+    "path": "results/synthetic_popPK_dataset.csv",
+    "sha256": "b0b2df3f1a4d9e9e530059e0e11c5937a4b0abd1d4d0a5df6121466683fb94bc"
+  },
+  {
+    "path": "results/utility_surface_240_minus_960.csv",
+    "sha256": "0ff9b323b17dfd032fcdca6bb33cafcd90b1ba85fda5bf2b06e2eb3ca70a6e77"
+  },
+  {
+    "path": "results/validation_absolute_scale.csv",
+    "sha256": "ca547e3bf799d3d39e05929d04ca9a04d26c6f1cc14d899307eeffcd28c4c73f"
+  },
+  {
+    "path": "results/validation_covariate_ratios.csv",
+    "sha256": "6082c596f6a1c851b77b736b535e95c6db372496628e196f871375ba1d07b509"
+  },
+  {
+    "path": "results/validation_covariate_ratios_R.csv",
+    "sha256": "6122b6eb5639974d0a727cd2ed741e575247fe3096d0325b0e55eb24eb4e623e"
+  },
+  {
+    "path": "src/calibrate_240.py",
+    "sha256": "2cddcd7b3571e5875f023d8d394bf8addf8c43663fab700db00967697e805274"
+  },
+  {
+    "path": "src/decision_analysis.py",
+    "sha256": "015884c09572deb6f65a20f43dda6ab3e6a38df510e78073c12650c77573fa00"
+  },
+  {
+    "path": "src/figures.py",
+    "sha256": "b255bf03094d71bdd383a42dc8dbb8537d2d7f03af0bbd28d0ff4d6e4abe0406"
+  },
+  {
+    "path": "src/model.py",
+    "sha256": "85533ec713f337c2168cf876b3dca6a27313a7a12d1a0194489b44d7be9705c5"
+  },
+  {
+    "path": "src/simulate_population.py",
+    "sha256": "fe2bc53985a3b8d022d8faeb2d559b04bd2da325fe6fdfaf53726d4a1b06a985"
+  },
+  {
+    "path": "src/validate.py",
+    "sha256": "712d07e244238554158ecf0bac67fa6673f9fdbbd9eaba7c17b0778235e89d7f"
+  }
+]

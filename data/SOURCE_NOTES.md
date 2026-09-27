@@ -1,41 +1,16 @@
-# Source provenance: Table 35 transcription
+# Source and input lineage
 
-**Source document:** FDA Center for Drug Evaluation and Research, NDA/BLA Multi-disciplinary
-Review and Evaluation, NDA 214665, LUMAKRAS (sotorasib). Reference ID 4803204. 269 pages.
-Retrieved from Drugs@FDA.
+Evidence cutoff: September 26, 2026. No copyrighted full-text PDFs are included.
 
-**Table 35 location:** PDF pages 237, 238, 239 (document-numbered pages 237, 238, 239).
-Table caption appears on PDF page 236. Not redacted.
+| Input | Source and exact location | Verification and use |
+|---|---|---|
+| `poppk_parameters_final.csv` | Nagase et al. AAPS J. 2025;27:26, Table II, PDF p7; [DOI](https://doi.org/10.1208/s12248-024-01013-6) | Numeric final-estimate values preserved from the baseline; table and model figure inspected in the source audit. Annotation overclaims corrected. Point estimates drive deterministic checks. |
+| `covariate_targets.json` | Same article, Figure 3, PDF p9 | All twenty point ratios visually checked. This is not a transcription of the uncertainty bands. |
+| `fda_figure26_quartiles.csv` | [FDA NDA 214665 review](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/214665Orig1s000MultidisciplineR.pdf), Figure 26 left panel, PDF p248 | Bounds, labels, responder counts and denominators visually checked separately. The active regression uses labels or explicitly chosen alternatives. |
+| Hypothetical 35% and 25% response probabilities | Analyst-specified illustration | Not estimated from the trial and not documented sponsor planning assumptions. |
 
-**FDA's stated source for Table 35:** "Applicant's PopPK report, Table 1, Page 4".
-Table 35 is FDA's reproduction of Amgen's own parameter table, not an independent FDA fit.
+The FDA review's surrounding methods mention 248 patients, whereas the displayed bins total 228. The source does not explicitly identify what summary statistic its central labels represent. Those limitations remain visible in outputs.
 
-**Table 33** (baseline covariate distributions): PDF pages 233 to 235. Source: Applicant's
-PopPK report, Table 5, Page 41.
+The inspected EJC abstract reports modest exposure separation; it does not verify the exact historical day-specific calibration inputs, averaging method, denominators or uncertainty. Those inputs and their dependent projections are archived and excluded from active claims.
 
-**Figure 18** (covariate map): PDF page 239. Confirms covariate-to-parameter assignment:
-ALB, RACE, ECOG_BL, TUM_BS_CAT, SEX -> CL/F; SEX -> V2/F; PPI -> F1; HIGHFAT -> F1 and KA.
-
-**Figure 26** (exposure vs ORR): PDF page 248.
-**Figure 29** (exposure vs Grade 3+ AEs): PDF page 250.
-
----
-
-## Structural model, as described on PDF page 231
-
-- Two-compartment disposition
-- Three transit compartments for absorption
-- Relative bioavailability (F1) parameterized separately **by dose group**, with 960 mg as reference
-- Enzyme induction modeled as an exponential function with first-order rate coefficient KIND_F
-- Combined additive and proportional residual error
-
-Autoinduction magnitude, stated in text on PDF page 231: reaches steady state in 2 to 3 weeks,
-associated with a 35% decrease in relative bioavailability and a 91% increase in clearance.
-
-Cross-check: CLSS / CLBS = 41.3 / 21.6 = 1.91. Consistent with the stated 91% increase.
-Cross-check: F1SS_DG5 / F1BS_DG5 = 1.00 / 1.53 = 0.654, a 35% decrease. Consistent.
-
-Induction half-time = ln(2) / KIND_F = 0.693 / 0.00845 = 82 hours = 3.4 days.
-Approximately 4 to 5 induction half-lives = 14 to 17 days, consistent with "2 to 3 weeks".
-
----
+`reports/execution_report.json` records input and code hashes. `archive/baseline-043a805/MANIFEST_SHA256.json` preserves the reviewed baseline. Current source corrections are factual transcriptions and operational interpretation statements, not a claim to possess the sponsor control stream.

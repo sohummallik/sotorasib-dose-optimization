@@ -1,0 +1,58 @@
+{
+  "day8_typical_grid_results": [
+    {
+      "dt_h": 0.25,
+      "rtol": 1e-08,
+      "atol": 1e-06,
+      "AUC_tau": 29801.896682546612,
+      "Cmax": 4504.136499858714,
+      "Tmax": 1.0,
+      "C_tau": 209.6629567353251
+    },
+    {
+      "dt_h": 0.0625,
+      "rtol": 1e-08,
+      "atol": 1e-06,
+      "AUC_tau": 29794.73188124618,
+      "Cmax": 4525.565783815587,
+      "Tmax": 0.875,
+      "C_tau": 209.6629567353251
+    },
+    {
+      "dt_h": 0.03125,
+      "rtol": 1e-08,
+      "atol": 1e-06,
+      "AUC_tau": 29794.685656967413,
+      "Cmax": 4526.055053500204,
+      "Tmax": 0.90625,
+      "C_tau": 209.6629567353251
+    },
+    {
+      "dt_h": 0.015625,
+      "rtol": 1e-10,
+      "atol": 1e-08,
+      "AUC_tau": 29794.682651267627,
+      "Cmax": 4526.399778760987,
+      "Tmax": 0.890625,
+      "C_tau": 209.6629616760324
+    }
+  ],
+  "selected_vs_finer_stricter_percent_difference": {
+    "AUC_tau": 1.0088040935940512e-05,
+    "Cmax": -0.00761588188477047,
+    "C_tau": -2.356499817501856e-06
+  },
+  "frozen_parameter_mass_balance": {
+    "calculated_AUC": 23244.554971993384,
+    "exact_AUC": 23244.55205811138,
+    "relative_error": 1.2535763205256956e-07
+  },
+  "maximum_ratio_percent_change_on_halving_grid": 0.016071517239013566,
+  "budgets": {
+    "AUC_relative_error": 0.0005,
+    "Cmax_relative_grid_change": 0.001,
+    "solver_relative_change": 1e-05,
+    "covariate_ratio_percent_grid_change": 0.1
+  },
+  "interpretation": "These are numerical checks of the chosen equations, not tests of clinical model validity."
+}

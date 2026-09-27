@@ -1,0 +1,72 @@
+{
+  "baseline_commit": "043a80508e35306f2ddaac6edc9a621c12a25b21",
+  "commands": [
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/validate.py"
+      ],
+      "returncode": 0,
+      "seconds": 2.745761292055249
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/calibrate_240.py"
+      ],
+      "returncode": 0,
+      "seconds": 2.140675958013162
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/simulate_population.py"
+      ],
+      "returncode": 0,
+      "seconds": 32.68909583298955
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/decision_analysis.py"
+      ],
+      "returncode": 0,
+      "seconds": 1.6411006250418723
+    }
+  ],
+  "day8_original_metrics": {
+    "AUC_tau": 29749.027090528918,
+    "Cmax": 4504.136499858714,
+    "Tmax": 1.0,
+    "Cmin": 213.2937794062418
+  },
+  "day8_inclusive_AUC_same_grid": 29801.896682546612,
+  "day8_inclusive_terminal_concentration": 209.6629567353251,
+  "toxicity_saved": {
+    "tox_slope_gamma_calibrated": 2.697669019219871,
+    "tox_960": 0.5842139771367049,
+    "tox_240": 0.48999999999999944,
+    "beta_required_for_observed_7p9pt_ORR_gap": 2.3383581062576937,
+    "OR_per_doubling_required": 5.057267554712919,
+    "FDA_fitted_slope": -0.853666006390963,
+    "orr_diff_at_FDA_fitted_slope": -0.03709063067900553,
+    "orr_diff_at_null_slope": 0.0,
+    "toxicity_weight_at_which_240_wins_if_beta_is_required_value": 0.8385167721491077,
+    "note": "Exposure distributions from scenario B (calibrated). ORR anchored to 32.7% at 960 mg typical exposure."
+  },
+  "quartile_bounds_in_source": {
+    "lo": [
+      13000,
+      19000,
+      27000,
+      46000
+    ],
+    "hi": [
+      19000,
+      27000,
+      46000,
+      80000
+    ]
+  },
+  "dt_0_05_error": "Values in `t_eval` are not within `t_span`."
+}
