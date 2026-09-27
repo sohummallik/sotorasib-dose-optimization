@@ -78,5 +78,18 @@
       "scope": "Regulatory decision context only; no new numerical input or cross-indication pooling."
     }
   ],
-  "scientific_scope": "Retains PK implementation point checks, grouped-coordinate sensitivity and assumed formal-test calculation; no calibration/projection/utility reinstatement."
+  "scientific_scope": "Retains PK implementation point checks, grouped-coordinate sensitivity and assumed formal-test calculation; no calibration/projection/utility reinstatement.",
+  "repository_presentation_update": {
+    "verified_at_utc": "2026-09-27T06:24:56.475244+00:00",
+    "parent_documentation_commit": "e45aa6ae23cd60cdf3a8d0ea0e52c6e15c22d007",
+    "changes": "Consolidated truthful contribution statement and removed author-directed instructions from public analysis notes.",
+    "changed_document_sha256": {
+      "README.md": "96801ebfbacb70f4845afec4fe13e3ec2b8d461b01de3e17c9e8b68f602a1599",
+      "docs/ANALYSIS_NOTES.md": "256b272cc95341b081e499d514e34eebeae948ed9e54b9ebe2c397344024f284",
+      "docs/CORRECTION_LOG.md": "1a166b5fe45c9ea7489bbfe730b721ff8eacda9432bf6fa3deffa74deedea1b0"
+    },
+    "verification": "Repeated SHA-256 and byte comparisons of all 30 protected records with the computational commit; all 45 archive files still match their manifest.",
+    "new_numerical_execution": false,
+    "new_test_execution": false
+  }
 }

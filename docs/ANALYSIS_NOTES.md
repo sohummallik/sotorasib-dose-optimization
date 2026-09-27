@@ -46,7 +46,7 @@ The historical toxicity function anchored a probability at a reference AUC and m
 
 The active implementation follows the published three-transfer figure while documenting a conflicting transit-time formula. Albumin units and random-effect notation are treated as source ambiguities, not author-confirmed errors. The full trial article has now been inspected; its supplement and detailed protocol remain uninspected. Any future calibration extension still needs justified target estimands and uncertainty assumptions. The new article access does not change the retained source-verified grouped data or PK implementation checks.
 
-Original work involved reported Claude code assistance. This correction, test and documentation cycle involved Codex assistance. No independent human pharmacometric or clinical review is implied. The author must review and understand the code, claims, contribution record and limitations before dissemination.
+Author contributions and coding and writing assistance are described in the [README](../README.md#provenance-and-assistance).
 
 
 ## Immutable version provenance

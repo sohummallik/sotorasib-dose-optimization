@@ -70,7 +70,7 @@ All 45 original tracked files are preserved exactly under [`archive/baseline-043
 
 ## Provenance and assistance
 
-Sohum Mallik reports conducting the original project with Claude assistance in writing Python and R code and is the sole author. Subsequent source auditing, code correction, testing, regenerated figures and documentation involved Codex assistance. This record does not imply unassisted authorship, independent human expert review or institutional endorsement. No individual clinical-trial records were used. No full-text journal PDFs are distributed here.
+Sohum Mallik is the sole author. Claude assisted with the original Python and R code. Codex assisted with source checks, code corrections, testing, figures, and substantial drafting and editing. These contributions do not constitute independent human scientific review. The project uses published aggregate data; journal PDFs are not distributed here.
 
 ## Sources
 
@@ -81,4 +81,4 @@ Sohum Mallik reports conducting the original project with Claude assistance in w
 - [FDA final August 2024 dosage guidance](https://www.fda.gov/media/164555/download): Sections III.A–C, especially III.B, printed p7.
 - [Aung et al., JCO Oncology Practice, June 2026](https://doi.org/10.1200/OP-25-01315): subsequent synthesis relevant to context. No claim that the dose question is novel is made.
 
-Evidence-publication cutoff: September 26, 2026; source-access update: September 27, 2026. A successful run establishes the recorded computational checks, not clinical validity or readiness for public manuscript submission.
+Evidence-publication cutoff: September 26, 2026; source-access update: September 27, 2026. The computational checks assess the implementation; they do not establish clinical validity.
