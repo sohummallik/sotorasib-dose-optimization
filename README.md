@@ -1,84 +1,71 @@
-# Sotorasib dose evidence: reproduction and sensitivity analysis
+# Sotorasib dose selection: evidence and reproducible analyses
 
-This repository uses public aggregate evidence to examine what selected pharmacokinetic and statistical calculations can support about a dose-development question. The current analysis is deliberately narrow: published-model point checks, grouped exposure-coordinate sensitivity, and one explicitly hypothetical formal response-rate testing scenario. It does not identify an optimal sotorasib dose, establish dose equivalence, fit individual trial data, or reproduce the sponsor's original model development.
+What can published pharmacokinetic and clinical evidence establish about sotorasib dose selection in KRAS G12C-mutated non-small-cell lung cancer?
 
-Dosage selection combines activity, safety, tolerability and exposure; it differs from proving superiority or noninferiority. FDA's nonbinding August 2024 guidance does not require registrational hypothesis-testing power for every dose-comparison study. A randomized descriptive comparison can inform selection without establishing equivalence or proving that its precision is adequate. The 658-person scenario below addresses an assumed formal test, not a minimum for dosage optimization. [FDA guidance, Section III.B, printed p7](https://www.fda.gov/media/164555/download).
+This project examines that question through implementation checks of a published population pharmacokinetic (PK) model, sensitivity analysis of grouped exposure-response data, and a hypothetical response-rate testing scenario. The [randomized 960-mg versus 240-mg trial](https://doi.org/10.1016/j.ejca.2024.114204) provides clinical context. The analyses use published aggregate evidence; they do not fit individual trial data or develop a new population PK model.
 
-FDA authors later reported that the dose-related postmarketing requirement was fulfilled in December 2023, retaining 960 mg using the randomized dose comparison, PK/target-saturation information and supporting colorectal-cancer evidence. This project is a limited methodological audit of aggregate evidence, not a claim that no dosage decision could be made. [Singh, Vellanki and Pazdur, JCO 2025](https://doi.org/10.1200/JCO.24.00310).
+## Supported findings
 
-## Current supported results
-
-| Analysis | Result | Meaning |
+| Analysis and purpose | Retained result | Interpretation |
 |---|---|---|
-| Published PK covariate checks | 10/10 contrasts (20 point ratios) pass the retained 5% numerical comparison threshold; largest difference 1.901% | Limited agreement with selected published point summaries, not clinical model validation. |
-| Grouped exposure-coordinate sensitivity | OR per coordinate doubling: 0.553 using displayed labels; 0.677 using geometric range midpoints; 0.653 using arithmetic range midpoints | The fitted magnitude depends on how four bins are represented. Neither coordinate choice resolves confounding or recovers patient exposures. |
-| Hypothetical formal ORR test | 329 per arm, 658 total | 35% versus 25% response, equal allocation, two-sided alpha 0.05 and 80% power under the stated normal approximation. Not the sponsor's plan, a uniquely recommended design or a minimum for dosage optimization. |
+| **Published-model implementation checks:** compare AUC and peak-concentration ratios for ten covariate contrasts with Nagase Figure 3. | All 20 point ratios fall within the retained 5% numerical comparison threshold; the largest difference is **1.901%**. | Agreement supports this limited implementation check. It does not establish clinical prediction accuracy or reproduce the original model-development process. |
+| **Grouped exposure-coordinate sensitivity:** fit the same four FDA response-count groups using three representations of exposure. | Odds ratios per coordinate doubling are **0.553**, **0.677**, and **0.653** for displayed labels, geometric midpoints, and arithmetic midpoints, respectively. | The fitted magnitude depends on the assigned bin coordinates. These unadjusted associations do not establish a causal exposure effect. |
+| **Hypothetical formal response-rate test:** calculate sample size under explicit assumptions. | **329 participants per arm, 658 total**, for 35% versus 25% response, equal allocation, two-sided alpha 0.05, and 80% power. | This is an illustration of formal hypothesis testing, not the sponsor's design or a minimum sample size for dosage selection. |
 
-Conditional 95% intervals for the three grouped fits are 0.364–0.842, 0.505–0.907 and 0.480–0.887. They omit uncertainty in coordinate choice, within-bin exposures and confounding. The source Figure 26 totals 228 patients, whereas nearby methods refer to 248; the difference remains unresolved.
+The conditional 95% intervals for the grouped odds ratios are 0.364–0.842, 0.505–0.907, and 0.480–0.887. They omit uncertainty in coordinate choice, within-bin exposure, and confounding. Figure 26's four groups total 228 patients, while the nearby FDA methods refer to 248; this difference remains unresolved.
 
-## Reproduce the retained analysis
+![Selected PK covariate point checks](figures/pk_covariate_checks.png)
 
-The exact corrected code snapshot for the reported numbers is [46c83b90f396e942452241fdbe09ae7f1546a7c7](https://github.com/sohummallik/sotorasib-dose-optimization/tree/46c83b90f396e942452241fdbe09ae7f1546a7c7), with its [immutable execution manifest](https://github.com/sohummallik/sotorasib-dose-optimization/blob/46c83b90f396e942452241fdbe09ae7f1546a7c7/reports/execution_report.json). The later source-access revision [1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46](https://github.com/sohummallik/sotorasib-dose-optimization/commit/1e46c8cbe37b6e9bbdf9e483908f8e1c591aaa46) changed documentation only. The v0.3 framing/reproducibility update also leaves the calculations unchanged; its fresh hash review is recorded in `reports/documentation_review_v03.json`.
+**Figure 1.** Published and implemented point contrasts at 960 mg once daily, day 30. AUC is the area under the concentration-time curve. Comparisons use a 0.03125-hour sampling grid; solver and grid checks are recorded in the [numerical report](reports/numerical_checks.json). Source covariate labels are retained. Published uncertainty bands are not reproduced.
 
-To reproduce those fixed results, check out the corrected snapshot before running the commands below:
+![Grouped exposure-coordinate sensitivity](figures/grouped_coordinate_sensitivity.png)
+
+**Figure 2.** Left: response counts from FDA Figure 26, with Clopper–Pearson exact binomial 95% intervals calculated from those counts. Right: conditional Wald 95% intervals from grouped-binomial logistic fits. Midpoints are assumed coordinates, not recovered patient exposures. Source AUC units are h·ng/mL. This is a project-generated display of aggregate data.
+
+## Limits of interpretation
+
+Dosage selection integrates activity, safety, tolerability, and exposure. It differs from establishing superiority or noninferiority, as described in [FDA's nonbinding August 2024 guidance, Section III.B](https://www.fda.gov/media/164555/download). FDA authors subsequently reported that the dose-related postmarketing requirement was fulfilled in December 2023, retaining 960 mg on the broader evidence package ([Singh et al.](https://doi.org/10.1200/JCO.24.00310)). These limited calculations do not reconstruct that assessment or identify an optimal dose.
+
+- PK checks use deterministic typical-subject scenarios with random effects set to zero. Published model-notation ambiguities, parameter uncertainty, residual variability, and the original control stream are not resolved by selected point agreement.
+- Grouped response data cannot recover individual exposures or adjust for disease burden and other confounders.
+- The trial report verifies rounded 960/240 AUC ratios of 1.5 on day 1 and 1.3 on day 8, but leaves the ratio averaging convention, per-arm/per-day PK denominators, and ratio uncertainty unresolved. Its supplement and detailed protocol remain uninspected.
+- Calibrated low-dose exposure-overlap projections, toxicity/utility calculations, efficacy thresholds, observed-effect post hoc power, and incomplete R estimation results are excluded from current findings. Their original files remain identifiable in the [superseded baseline archive](archive/README.md).
+
+The [methods](docs/ANALYSIS_NOTES.md) explain these boundaries and the [parameter notes](data/PARAMETER_RESOLUTION.md) document source ambiguities.
+
+## Reproduce the results
+
+The reported calculations are fixed at [commit `46c83b90f396e942452241fdbe09ae7f1546a7c7`](https://github.com/sohummallik/sotorasib-dose-optimization/tree/46c83b90f396e942452241fdbe09ae7f1546a7c7). Its [execution manifest](https://github.com/sohummallik/sotorasib-dose-optimization/blob/46c83b90f396e942452241fdbe09ae7f1546a7c7/reports/execution_report.json) records Python 3.13.5, dependency versions, six successful commands, and 14 passing tests. Later documentation changes do not change these calculations.
+
+From a fresh clone on macOS or Linux, using Python 3.13:
 
 ```bash
+git clone https://github.com/sohummallik/sotorasib-dose-optimization.git
+cd sotorasib-dose-optimization
 git checkout 46c83b90f396e942452241fdbe09ae7f1546a7c7
-```
-
-Use Python with the dependencies in `requirements.txt`. The exact tested environment is recorded in `reports/execution_report.json`; `requirements-tested.txt` lists the tested package versions. An isolated environment is recommended when installing dependencies.
-
-```bash
+python3.13 -m venv .venv
+source .venv/bin/activate
 python -m pip install -r requirements-tested.txt
 python src/run_all.py
 ```
 
-The runner executes the focused tests, PK point checks, numerical checks, grouped-coordinate sensitivity, hypothetical design scenario and figure generation. The active pipeline is deterministic and does not use random draws. The original baseline was independently rerun before correction; the historical runner and its random seeds are archived rather than presented as supported commands.
+On Windows, create the environment with `py -3.13 -m venv .venv` and activate with `.venv\Scripts\activate` instead. The isolated-environment instructions are a reproduction route; the recorded run used the existing Anaconda environment identified in the manifest.
 
-Individual supported commands, in order:
+The deterministic runner executes tests, PK checks, numerical checks, grouped sensitivity, the hypothetical design calculation, and figure generation. It writes results, figures, logs, and a new execution manifest. It never runs archived analyses. Individual commands, tolerances, and checks not performed are listed in the [execution documentation](docs/EXECUTION_REPORT.md).
 
-```bash
-python -m unittest discover -s tests -v
-python src/validate.py
-python src/numerical_checks.py
-python src/grouped_exposure_response.py
-python src/design_scenario.py
-python src/figures.py
-```
+## Repository map and sources
 
-Run these from the repository root. `src/run_all.py` creates output directories and records command exit status, environment, code/input hashes and omitted checks.
+| Location | Contents |
+|---|---|
+| [`src/`](src/) and [`tests/`](tests/) | Retained analyses and focused numerical/statistical tests. |
+| [`data/`](data/) | Published point estimates, grouped counts, and [source locations and verification notes](data/SOURCE_NOTES.md). |
+| [`results/`](results/) and [`figures/`](figures/) | Retained numerical outputs and figures in PNG/PDF. |
+| [`docs/ANALYSIS_NOTES.md`](docs/ANALYSIS_NOTES.md) | Methods, assumptions, and exclusions. |
+| [`docs/EXECUTION_REPORT.md`](docs/EXECUTION_REPORT.md) and [`reports/`](reports/) | Execution details, original logs, and verification records. |
+| [`docs/CORRECTION_LOG.md`](docs/CORRECTION_LOG.md) and [`archive/`](archive/README.md) | Correction history and the unchanged, superseded baseline. |
 
-## Current figures
-
-![Selected PK covariate point checks](figures/pk_covariate_checks.png)
-
-**Figure 1.** Implementation and published point contrasts from Nagase Figure 3, at 960 mg once daily. The implementation uses day 30, a 0.03125-hour sample grid, and LSODA tolerances documented in the numerical report. Only point contrasts are compared; published uncertainty bands are not reproduced. Covariate definitions follow the source's labels. Agreement is not clinical validation.
-
-![Grouped-coordinate sensitivity](figures/grouped_coordinate_sensitivity.png)
-
-**Figure 2.** Left: FDA Figure 26 response counts in four predicted-AUC quartiles, with Clopper–Pearson exact binomial 95% intervals calculated here from the source counts. Right: conditional Wald 95% intervals from three grouped-binomial logistic fits. Exposure ranges and displayed coordinates are distinct source fields; alternative midpoints are assumptions, not inferred individual exposures. AUC is in h·ng/mL. The association is unadjusted and does not establish a causal exposure effect. The figure is a newly generated display of the retained aggregate data, not a copy of the FDA image.
-
-## Corrections and exclusions
-
-The active interval calculation now includes exact endpoints, interpolates requested boundaries when needed, forbids extrapolation, and explicitly treats central concentration as continuous at an oral dose. The terminal metric is called `C_tau`, avoiding confusion with the interval minimum. A source-linked test protects the corrected FDA quartile boundaries. Numerical refinement and an analytical steady-state mass-balance identity supplement the implementation checks.
-
-The previous two-target 240-mg calibration and overlap projections remain excluded. The full trial article was supplied and inspected after the initial correction: Figure 3 verifies rounded 960/240 AUC ratios of 1.5 on day 1 and 1.3 on day 8, and identifies a September 9, 2022 PK cutoff with 208 patients overall. It plots mean (SD) concentration profiles, but does not provide exact PK-parameter values, an explicit arithmetic-versus-geometric convention for the ratios, per-arm/per-day PK denominators or ratio uncertainty. The supplement and detailed protocol remain uninspected. Fitting two parameters to two targets is calibration, not independent validation. With shared virtual subjects and clearance, the steady-state AUC ratio reduces algebraically to `(240 × F240) / (960 × F960)`; simulation does not independently corroborate that ratio.
-
-The previous toxicity/utility and efficacy-threshold results are excluded. The toxicity curve described matching both arm means but actually predicted 58.42% and 49.00% instead of its stated 61.5% and 49.0% targets. Merely retuning a curve would not justify a causal exposure-toxicity model or a benefit-risk utility. Post hoc observed-effect power is not active evidence. The incomplete R estimation run is historical only.
-
-All 45 original tracked files are preserved exactly under [`archive/baseline-043a805`](archive/baseline-043a805), with a SHA-256 manifest. Archived README statements and figures are superseded. The active runner never executes the archive. See the [correction log](docs/CORRECTION_LOG.md), [methods and limitations](docs/ANALYSIS_NOTES.md), [source notes](data/SOURCE_NOTES.md) and [execution report](docs/EXECUTION_REPORT.md).
+Primary sources are [Nagase et al., AAPS Journal 2025](https://doi.org/10.1208/s12248-024-01013-6), [FDA's 2021 multidisciplinary review](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/214665Orig1s000MultidisciplineR.pdf), [Hochmair et al., EJC 2024](https://doi.org/10.1016/j.ejca.2024.114204), [FDA's 2024 dosage guidance](https://www.fda.gov/media/164555/download), and [Singh et al., JCO 2025](https://doi.org/10.1200/JCO.24.00310). [Aung et al., JCO Oncology Practice 2026](https://doi.org/10.1200/OP-25-01315) provides subsequent context. Exact source locations and access limitations are in the source notes. Evidence-publication cutoff: September 26, 2026; source-access update: September 27, 2026. Journal PDFs are not distributed here.
 
 ## Provenance and assistance
 
-Sohum Mallik is the sole author. Claude assisted with the original Python and R code. Codex assisted with source checks, code corrections, testing, figures, and substantial drafting and editing. These contributions do not constitute independent human scientific review. The project uses published aggregate data; journal PDFs are not distributed here.
-
-## Sources
-
-- [Nagase et al., AAPS Journal 2025;27:26](https://doi.org/10.1208/s12248-024-01013-6): Tables I–II and Figures 1 and 3.
-- [FDA NDA 214665 multidisciplinary review (2021)](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/214665Orig1s000MultidisciplineR.pdf): Figure 26, PDF page 248.
-- [Hochmair et al., European Journal of Cancer 2024;208:114204](https://doi.org/10.1016/j.ejca.2024.114204): full article supplied by the author and inspected on September 27, 2026, including Figure 3 and Table 2. Supplement and detailed protocol remain uninspected.
-- [Singh, Vellanki and Pazdur, JCO 2025;43:248–250](https://doi.org/10.1200/JCO.24.00310): regulatory perspective published online October 7, 2024; publisher-indexed text inspected, no full PDF obtained.
-- [FDA final August 2024 dosage guidance](https://www.fda.gov/media/164555/download): Sections III.A–C, especially III.B, printed p7.
-- [Aung et al., JCO Oncology Practice, June 2026](https://doi.org/10.1200/OP-25-01315): subsequent synthesis relevant to context. No claim that the dose question is novel is made.
-
-Evidence-publication cutoff: September 26, 2026; source-access update: September 27, 2026. The computational checks assess the implementation; they do not establish clinical validity.
+Sohum Mallik is the sole human author and conducted the original project work with Claude assistance in writing Python and R code. Codex later assisted with source checking, analytical and code corrections, testing, figure generation, and substantial drafting and editing of repository documentation. This statement describes repository work; separate manuscripts and writing samples have their own assistance histories. Tool-assisted checks do not constitute independent human scientific review or confirm the author's final approval.

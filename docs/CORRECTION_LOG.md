@@ -59,3 +59,10 @@ Reproducibility links now identify the exact computational snapshot `46c83b90f39
 ### Repository presentation
 
 The README now uses a single concise contribution statement. Repeated assistance wording and author-directed review instructions were removed from the analysis notes. Scientific limitations and the assistance record remain explicit. This presentation change does not alter code, data or results.
+
+
+## Documentation cleanup, September 27, 2026
+
+The README now leads with the research question, retained findings and their limitations, followed by figures, reproduction instructions, navigation and one contribution statement. Active methods, source notes and execution documentation consolidate repeated update narratives; the archive index clearly separates historical files from current results. The contribution statement distinguishes the original project, original coding assistance, later computational/source/documentation assistance and separate writing artifacts.
+
+This update changes documentation only. Code, tests, numerical inputs, dependencies, saved results, figures, execution records and all 45 baseline files remain unchanged. The computational reference remains `46c83b90f396e942452241fdbe09ae7f1546a7c7`. No new numerical run or test execution was performed for this cleanup.
