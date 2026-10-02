@@ -1,0 +1,14 @@
+{
+  "contrasts": 10,
+  "point_ratios": 20,
+  "passing_contrasts": 10,
+  "maximum_absolute_percent_error": 1.900724512011931,
+  "grid_h": 0.03125,
+  "dose_mg": 960,
+  "day": 30,
+  "solver": "LSODA",
+  "rtol": 1e-08,
+  "atol": 1e-06,
+  "point_contrast_tolerance_percent": 5.0,
+  "interpretation": "Selected published point-contrast agreement only. Published uncertainty bands and original control stream were not reproduced; clinical validity is not established."
+}

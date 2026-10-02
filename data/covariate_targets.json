@@ -1,0 +1,16 @@
+{
+  "source": "Nagase et al. AAPS J. 2025;27:26, Figure 3, PDF page 9; doi:10.1208/s12248-024-01013-6",
+  "scope": "Published point ratios only, not their uncertainty bands",
+  "contrasts": [
+    {"contrast":"Low albumin 30 vs 40 g/L","overrides":{"alb_gL":30},"Cmax":1.075,"AUC_tau":1.414},
+    {"contrast":"ECOG 0 vs 1","overrides":{"ecog":0},"Cmax":0.977,"AUC_tau":0.868},
+    {"contrast":"ECOG 2 vs 1","overrides":{"ecog":2},"Cmax":1.017,"AUC_tau":1.083},
+    {"contrast":"Asian vs Caucasian","overrides":{"race":"Asian"},"Cmax":0.966,"AUC_tau":0.817},
+    {"contrast":"Black vs Caucasian","overrides":{"race":"Black"},"Cmax":0.988,"AUC_tau":0.934},
+    {"contrast":"Female vs male","overrides":{"sex":"F"},"Cmax":1.242,"AUC_tau":1.190},
+    {"contrast":"Tumor <=70 vs >70 mm","overrides":{"tumor":"<=70"},"Cmax":0.982,"AUC_tau":0.892},
+    {"contrast":"High-fat meal vs fasted","overrides":{"highfat":true},"Cmax":1.130,"AUC_tau":1.327},
+    {"contrast":"PPI vs none","overrides":{"ppi":true},"Cmax":0.828,"AUC_tau":0.820},
+    {"contrast":"Healthy vs reference patient","overrides":{"tumor":"healthy","ecog":0},"Cmax":0.898,"AUC_tau":0.534}
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "figure_population_total": 228,
+  "number_of_groups": 4,
+  "source": "FDA NDA 214665 multidisciplinary review, Figure 26, PDF page 248",
+  "unit": "AUCtau,ss in h*ng/mL",
+  "models": [
+    {
+      "coordinate_scheme": "displayed_labels",
+      "intercept": 8.032735764041902,
+      "slope_per_log_AUC": -0.853666006390963,
+      "slope_SE": 0.3090167636740192,
+      "OR_per_doubling": 0.5533767721641776,
+      "conditional_95CI_lower": 0.3636597437244406,
+      "conditional_95CI_upper": 0.8420669520211826,
+      "coordinate_q1": 13000.0,
+      "coordinate_q2": 19000.0,
+      "coordinate_q3": 27000.0,
+      "coordinate_q4": 46000.0
+    },
+    {
+      "coordinate_scheme": "geometric_range_midpoints",
+      "intercept": 5.086467234983975,
+      "slope_per_log_AUC": -0.5632259731861282,
+      "slope_SE": 0.21578008946668892,
+      "OR_per_doubling": 0.6767871242447916,
+      "conditional_95CI_lower": 0.5048214269829222,
+      "conditional_95CI_upper": 0.9073323497400404,
+      "coordinate_q1": 8944.27190999916,
+      "coordinate_q2": 18761.66303929372,
+      "coordinate_q3": 27748.873851023214,
+      "coordinate_q4": 54543.56057317857
+    },
+    {
+      "coordinate_scheme": "arithmetic_range_midpoints",
+      "intercept": 5.65642321031345,
+      "slope_per_log_AUC": -0.6158777897111479,
+      "slope_SE": 0.2261569549355916,
+      "OR_per_doubling": 0.6525327473678063,
+      "conditional_95CI_lower": 0.4799162532798455,
+      "conditional_95CI_upper": 0.887236019779243,
+      "coordinate_q1": 10500.0,
+      "coordinate_q2": 19000.0,
+      "coordinate_q3": 28500.0,
+      "coordinate_q4": 60000.0
+    }
+  ],
+  "limitations": [
+    "The source text mentions an ER population of 248, while these four bins total 228; not resolved.",
+    "The source does not explicitly name the statistic represented by its displayed central labels.",
+    "All fits use aggregate counts at chosen coordinates, not patient-level continuous exposure data.",
+    "Conditional Wald intervals omit coordinate uncertainty, within-bin exposure variability and confounding.",
+    "Alternative midpoints are representation sensitivity analyses, not estimates of the actual within-bin means."
+  ]
+}

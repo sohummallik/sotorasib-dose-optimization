@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+figures/scratch/
+reports/*.log
+reports/execution_report.json

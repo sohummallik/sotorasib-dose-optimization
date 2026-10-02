@@ -1,0 +1,6 @@
+# Tested R environment for src/check_pk.R
+R 4.6.1
+rxode2 5.1.2
+jsonlite 2.0.0
+
+# src/check_statistics.R uses only packages included with R.
