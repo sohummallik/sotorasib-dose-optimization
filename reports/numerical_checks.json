@@ -1,0 +1,160 @@
+{
+  "day8_typical_grid_results": [
+    {
+      "dt_h": 0.25,
+      "rtol": 1e-08,
+      "atol": 1e-06,
+      "AUC_tau": 29801.896682546612,
+      "Cmax": 4504.136499858714,
+      "Tmax": 1.0,
+      "C_tau": 209.6629567353251
+    },
+    {
+      "dt_h": 0.0625,
+      "rtol": 1e-08,
+      "atol": 1e-06,
+      "AUC_tau": 29794.73188124618,
+      "Cmax": 4525.565783815587,
+      "Tmax": 0.875,
+      "C_tau": 209.6629567353251
+    },
+    {
+      "dt_h": 0.03125,
+      "rtol": 1e-08,
+      "atol": 1e-06,
+      "AUC_tau": 29794.685656967413,
+      "Cmax": 4526.055053500204,
+      "Tmax": 0.90625,
+      "C_tau": 209.6629567353251
+    },
+    {
+      "dt_h": 0.015625,
+      "rtol": 1e-10,
+      "atol": 1e-08,
+      "AUC_tau": 29794.682651267627,
+      "Cmax": 4526.399778760987,
+      "Tmax": 0.890625,
+      "C_tau": 209.6629616760324
+    }
+  ],
+  "selected_vs_finer_stricter_percent_difference": {
+    "AUC_tau": 1.0088040935940512e-05,
+    "Cmax": -0.00761588188477047,
+    "C_tau": -2.356499817501856e-06
+  },
+  "frozen_parameter_mass_balance": {
+    "calculated_AUC": 23244.554971993384,
+    "exact_AUC": 23244.55205811138,
+    "relative_error": 1.2535763205256956e-07
+  },
+  "covariate_ratio_grid_sensitivity": [
+    {
+      "contrast": "Low albumin 30 vs 40 g/L",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": 3.327284203713532e-06
+    },
+    {
+      "contrast": "Low albumin 30 vs 40 g/L",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.009315067559745316
+    },
+    {
+      "contrast": "ECOG 0 vs 1",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -1.6972185212793534e-06
+    },
+    {
+      "contrast": "ECOG 0 vs 1",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.016071517239013566
+    },
+    {
+      "contrast": "ECOG 2 vs 1",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": 8.407288643041966e-07
+    },
+    {
+      "contrast": "ECOG 2 vs 1",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.009926761270495632
+    },
+    {
+      "contrast": "Asian vs Caucasian",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -2.4727675129732063e-06
+    },
+    {
+      "contrast": "Asian vs Caucasian",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 2.220446049250313e-14
+    },
+    {
+      "contrast": "Black vs Caucasian",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -8.250198080261839e-07
+    },
+    {
+      "contrast": "Black vs Caucasian",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.0
+    },
+    {
+      "contrast": "Female vs male",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -5.332529418033971e-07
+    },
+    {
+      "contrast": "Female vs male",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.0
+    },
+    {
+      "contrast": "Tumor <=70 vs >70 mm",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -1.3375569873907978e-06
+    },
+    {
+      "contrast": "Tumor <=70 vs >70 mm",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.008157089235538706
+    },
+    {
+      "contrast": "High-fat meal vs fasted",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": 1.0591207555421533e-05
+    },
+    {
+      "contrast": "High-fat meal vs fasted",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.003301248404330437
+    },
+    {
+      "contrast": "PPI vs none",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -5.433431482515516e-11
+    },
+    {
+      "contrast": "PPI vs none",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.0
+    },
+    {
+      "contrast": "Healthy vs reference patient",
+      "metric": "AUC_tau",
+      "percent_change_on_halving_grid": -9.925133970245525e-06
+    },
+    {
+      "contrast": "Healthy vs reference patient",
+      "metric": "Cmax",
+      "percent_change_on_halving_grid": 0.0002565315539326818
+    }
+  ],
+  "maximum_ratio_percent_change_on_halving_grid": 0.016071517239013566,
+  "budgets": {
+    "AUC_relative_error": 0.0005,
+    "Cmax_relative_grid_change": 0.001,
+    "solver_relative_change": 1e-05,
+    "covariate_ratio_percent_grid_change": 0.1
+  },
+  "interpretation": "These are numerical checks of the chosen equations, not tests of clinical model validity."
+}
